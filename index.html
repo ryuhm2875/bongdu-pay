@@ -472,6 +472,7 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
         <input id="sl-name" placeholder="이름 (예: 꽝)" style="flex:2;min-width:70px">
         <input id="sl-amt" type="number" placeholder="BP" style="flex:1;min-width:50px" min="0">
         <input id="sl-wt" type="number" placeholder="비율" style="flex:1;min-width:46px" min="1" value="1">
+        <input id="sl-color" type="color" value="#c9a84c" style="width:32px;height:32px;border:none;border-radius:var(--rmd);cursor:pointer;padding:2px;background:none;" title="색상 선택">
         <button class="btn ink sm" onclick="addSlot()">추가</button>
       </div>
       <div style="font-size:11px;color:var(--mute);margin-top:5px">💡 BP 0 = 꽝 · 비율이 클수록 자주 나옴</div>
@@ -1487,26 +1488,53 @@ function launchLuckyConfetti(){
 }
 
 
+let editSlotId=null;
 function renderSlots() {
   const total=D.slots.reduce((a,s)=>a+s.weight,0);
   document.getElementById('sl-list').innerHTML=D.slots.map((s,i)=>{
     const pct=((s.weight/total)*100).toFixed(1);
-    return `<div class="sl-item">
-      <div class="sl-dot" style="background:${s.color||CLR[i%CLR.length]}"></div>
+    const col=s.color||CLR[i%CLR.length];
+    if(editSlotId===s.id){
+      return `<div class="sl-item" id="sl-${s.id}" style="flex-wrap:wrap;gap:5px;padding:8px;">
+        <input id="sle-color-${s.id}" type="color" value="${col}" style="width:28px;height:28px;border:none;border-radius:var(--rmd);cursor:pointer;padding:2px;background:none;" title="색상">
+        <input id="sle-name-${s.id}" value="${s.name}" style="flex:2;min-width:70px;height:28px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 7px;font-size:12px;font-family:var(--B);background:var(--cloud);">
+        <input id="sle-amt-${s.id}" type="number" value="${s.amount}" placeholder="0=꽝" style="width:72px;height:28px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 7px;font-size:12px;font-family:var(--B);background:var(--cloud);">
+        <input id="sle-wt-${s.id}" type="number" value="${s.weight}" min="0.1" step="0.1" style="width:56px;height:28px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 7px;font-size:12px;font-family:var(--B);background:var(--cloud);" title="가중치">
+        <button class="btn ink sm" style="height:28px;" onclick="saveSlot(${s.id})">저장</button>
+        <button class="btn cld sm" style="height:28px;" onclick="cancelSlotEdit()">취소</button>
+      </div>`;
+    }
+    return `<div class="sl-item" id="sl-${s.id}">
+      <div class="sl-dot" style="background:${col}"></div>
       <div class="sl-name">${s.name}</div>
       <div class="sl-bp">${s.amount>0?s.amount.toLocaleString()+' BP':'꽝'}</div>
       <div class="sl-pct">${pct}%</div>
+      <button class="sl-del" onclick="editSlot(${s.id})">✏️</button>
       <button class="sl-del" onclick="delSlot(${s.id})">✕</button>
     </div>`;
   }).join('');
   drawWheel();
+}
+function editSlot(id){editSlotId=id;renderSlots();}
+function cancelSlotEdit(){editSlotId=null;renderSlots();}
+function saveSlot(id){
+  const s=D.slots.find(x=>x.id===id);if(!s)return;
+  const name=document.getElementById(`sle-name-${id}`)?.value.trim();
+  const amount=parseInt(document.getElementById(`sle-amt-${id}`)?.value)||0;
+  const weight=parseFloat(document.getElementById(`sle-wt-${id}`)?.value)||1;
+  if(!name){toast('이름을 입력하세요.');return;}
+  const color=document.getElementById(`sle-color-${id}`)?.value||s.color;
+  s.name=name;s.amount=amount;s.weight=weight;s.color=color;
+  editSlotId=null;
+  save();renderSlots();toast('슬롯 수정 ✓');
 }
 function addSlot() {
   const name=document.getElementById('sl-name').value.trim();
   const amount=parseInt(document.getElementById('sl-amt').value)||0;
   const weight=parseFloat(document.getElementById('sl-wt').value)||1;
   if(!name){toast('이름을 입력하세요.');return;}
-  D.slots.push({id:D.nSlot++,name,amount,weight,color:CLR[D.slots.length%CLR.length]});
+  const color=document.getElementById('sl-color')?.value||CLR[D.slots.length%CLR.length];
+  D.slots.push({id:D.nSlot++,name,amount,weight,color});
   save();renderSlots();
   ['sl-name','sl-amt'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('sl-wt').value='1';
