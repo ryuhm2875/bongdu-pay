@@ -748,6 +748,12 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
     <div class="mb">
       <div style="font-size:10px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px">구매할 학생 선택</div>
       <div id="m-buy-list"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin:10px 0 4px;padding:10px 12px;background:var(--cloud);border-radius:var(--rmd);">
+        <span style="font-size:12px;font-weight:700;color:var(--mute);white-space:nowrap;">수량</span>
+        <input type="number" id="buy-qty" min="1" value="1" style="width:70px;height:32px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 8px;font-size:14px;font-weight:700;font-family:var(--B);text-align:center;background:var(--canvas);outline:none;" oninput="updateBuyTotal()">
+        <span style="flex:1;font-size:12px;color:var(--mute);">개</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink);" id="buy-total-disp"></span>
+      </div>
       <div class="m-acts"><button class="btn cld sm" onclick="closeAll()">취소</button><button class="btn ink sm" onclick="confirmBuy()">구매 확정</button></div>
     </div>
   </div>
@@ -775,7 +781,7 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 /* ════════════════════════════════════
    FIREBASE 설정
 ════════════════════════════════════ */
-let FB_URL  = localStorage.getItem('fb_url')  || '';
+let FB_URL  = 'https://bdpay-31066-default-rtdb.firebaseio.com';
 let FB_ROOM = localStorage.getItem('fb_room') || 'goheung-main';
 let USE_FB  = false;
 let fbListener = null;
@@ -1949,8 +1955,11 @@ function openBuy(itemId){
   const sp=getSP(item),price=sp!==null?sp:item.price;
   document.getElementById('m-buy-name').textContent=`${item.emoji} ${item.name}`;
   document.getElementById('m-buy-price').textContent=sp!==null?`${sp.toLocaleString()} (${D.sale.rate}% 할인)`:price.toLocaleString();
+  document.getElementById('buy-qty').value=1;
+  document.getElementById('buy-total-disp').textContent=`총 ${price.toLocaleString()} BP`;
   document.getElementById('m-buy-list').innerHTML=D.students.sort((a,b)=>b.balance-a.balance).map(s=>{
-    const ok=s.balance>=price;
+    const qty=parseInt(document.getElementById('buy-qty')?.value)||1;
+    const ok=s.balance>=price*qty;
     return `<div class="buy-row ${!ok?'no':''}" id="br-${s.id}" onclick="${ok?`selBuy(${s.id})`:''}">
       <div><div class="buy-name">${s.name}</div><div class="buy-st" style="color:${ok?'var(--green)':'var(--red)'}">${ok?'구매 가능':'잔액 부족'}</div></div>
       <div class="buy-bp">${s.balance.toLocaleString()} BP</div>
@@ -1958,16 +1967,40 @@ function openBuy(itemId){
   }).join('');
   openM('m-buy');
 }
+function updateBuyTotal(){
+  const item=D.shopItems.find(i=>i.id===selItem);if(!item)return;
+  const sp=getSP(item),price=sp!==null?sp:item.price;
+  const qty=Math.max(1,parseInt(document.getElementById('buy-qty').value)||1);
+  document.getElementById('buy-total-disp').textContent=`총 ${(price*qty).toLocaleString()} BP`;
+  // 잔액 부족 여부 재계산
+  document.querySelectorAll('.buy-row').forEach(r=>{
+    const id=parseInt(r.id.replace('br-',''));
+    const s=D.students.find(s=>s.id===id);if(!s)return;
+    const ok=s.balance>=price*qty;
+    r.classList.toggle('no',!ok);
+    r.onclick=ok?()=>selBuy(id):null;
+    const st=r.querySelector('.buy-st');
+    if(st){st.textContent=ok?'구매 가능':'잔액 부족';st.style.color=ok?'var(--green)':'var(--red)';}
+    if(selBuyer===id&&!ok){selBuyer=null;r.classList.remove('on');}
+  });
+}
 function selBuy(id){selBuyer=id;document.querySelectorAll('.buy-row').forEach(r=>r.classList.remove('on'));const el=document.getElementById('br-'+id);if(el)el.classList.add('on');}
 function confirmBuy(){
   if(!selBuyer){toast('학생을 선택하세요.');return;}
   const item=D.shopItems.find(i=>i.id===selItem);
   const student=D.students.find(s=>s.id===selBuyer);
   const sp=getSP(item),price=sp!==null?sp:item.price;
-  if(student.balance<price){toast('잔액이 부족해요.');return;}
-  student.balance-=price;if(item.stock>0)item.stock--;
-  addTx(student.id,'spend',price,`🛍️ ${item.emoji} ${item.name}${sp!==null?` (${D.sale.rate}% 세일)`:''}`);
-  save();closeAll();renderShop();toast(`${student.name}: ${item.name} 구매 ✓`);
+  const qty=Math.max(1,parseInt(document.getElementById('buy-qty').value)||1);
+  const total=price*qty;
+  if(student.balance<total){toast('잔액이 부족해요.');return;}
+  if(item.stock>=0&&item.stock<qty){toast(`재고가 부족해요. (재고: ${item.stock}개)`);return;}
+  student.balance-=total;
+  if(item.stock>0)item.stock-=qty;
+  const saleStr=sp!==null?` (${D.sale.rate}% 세일)`:'';
+  const qtyStr=qty>1?` ${qty}개`:'';
+  addTx(student.id,'spend',total,`🛍️ ${item.emoji} ${item.name}${qtyStr}${saleStr}`);
+  save();closeAll();renderShop();renderStudents();renderStats();
+  toast(`${student.name}: ${item.name}${qtyStr} 구매 ✓`);
 }
 
 /* ── SALE ── */
