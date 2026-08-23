@@ -338,6 +338,48 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 /* TOAST */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--canvas);padding:9px 20px;border-radius:var(--pill);font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:500;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ════ CLASSROOM (자리배치 · 번호뽑기) ════ */
+.cr-layout{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start;}
+.cr-board{background:var(--ink);color:var(--canvas);height:56px;display:flex;align-items:center;justify-content:center;gap:14px;border-radius:var(--rmd) var(--rmd) 0 0;}
+.cr-board .en{font-family:var(--D);font-size:22px;letter-spacing:7px;padding-left:7px;}
+.cr-board .ko{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:4px;padding-left:4px;}
+.cr-floorwrap{background:var(--cloud);border:1px solid var(--hair);border-top:none;border-radius:0 0 var(--rmd) var(--rmd);overflow:hidden;}
+.cr-floor{position:relative;width:1000px;height:620px;transform-origin:top left;touch-action:none;}
+.cr-floor.snap{background-image:radial-gradient(rgba(17,17,17,.12) 1px,transparent 1px);background-size:20px 20px;background-position:9px 9px;}
+.cr-desk{position:absolute;width:110px;height:66px;background:var(--canvas);border:1.5px solid var(--hair);border-radius:10px;cursor:grab;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--ink);user-select:none;transition:border-color .12s;}
+.cr-desk .n{position:absolute;top:5px;left:8px;font-size:9px;font-weight:700;color:var(--faint);}
+.cr-desk .bp{position:absolute;bottom:5px;right:8px;font-size:9px;font-weight:700;color:var(--gold);}
+.cr-desk.empty{border-style:dashed;color:var(--faint);font-weight:500;}
+.cr-desk.sel{background:var(--ink);color:var(--canvas);border-color:var(--ink);}
+.cr-desk.sel .n{color:var(--gold);}
+.cr-desk.drag{cursor:grabbing;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.cr-desk .nm{transition:opacity .22s;}
+.cr-desk.fade .nm{opacity:0;}
+.cr-panel{background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);padding:14px;}
+.cr-panel+.cr-panel{margin-top:10px;}
+.cr-lbl{font-size:10px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+.cr-stack{display:flex;flex-direction:column;gap:5px;}
+.cr-stack .btn{justify-content:center;}
+.cr-inp{width:100%;height:34px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 10px;font-family:var(--B);font-size:13px;background:var(--cloud);outline:none;}
+.cr-inp:focus{border-color:var(--ink);background:var(--canvas);}
+.cr-check{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--mute);cursor:pointer;margin-top:10px;}
+.cr-check input{width:14px;height:14px;accent-color:var(--ink);cursor:pointer;}
+.cr-note{font-size:11px;color:var(--faint);margin-top:9px;line-height:1.6;}
+.cr-tile{background:var(--ink);border-radius:var(--rlg);padding:26px 26px 22px;color:var(--canvas);display:flex;flex-direction:column;justify-content:space-between;min-height:290px;}
+.cr-tile .cap{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.cr-digit{font-family:var(--D);font-size:150px;line-height:.88;letter-spacing:4px;color:var(--gold);}
+.cr-digit.roll{color:rgba(255,255,255,.3);}
+.cr-who{font-size:19px;font-weight:700;}
+.cr-nums{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.cr-num{min-width:38px;height:38px;padding:0 11px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--hair);border-radius:var(--pill);font-size:12px;font-weight:700;background:var(--canvas);color:var(--ink);}
+.cr-num.used{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+.cr-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--hair);}
+.cr-row:last-child{border-bottom:none;}
+.cr-row .nm2{font-size:13px;font-weight:700;}
+.cr-row .v{font-family:var(--D);font-size:22px;color:var(--gold);letter-spacing:1px;}
+.chip.done{opacity:.35;cursor:default;}
+@media(max-width:1080px){.cr-layout{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -432,6 +474,8 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
     <button class="tab" onclick="go('stock')">📈 주식</button>
     <button class="tab" onclick="go('history')">📋 내역</button>
     <button class="tab" onclick="go('ranking')">🏆 랭킹</button>
+    <button class="tab" onclick="go('seating')">🪑 자리배치</button>
+    <button class="tab" onclick="go('draw')">🎲 번호뽑기</button>
   </div>
 </nav>
 
@@ -607,6 +651,98 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
   <div class="rk-hero"><div class="rk-eye">BONGDU PAY</div><div class="rk-title">LEADERBOARD</div></div>
   <div class="wrap" style="padding-top:18px"><div id="rk-list"></div></div>
 </div>
+
+<!-- 자리배치 -->
+<div id="pg-seating" class="page">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">SEATING CHART</div>
+        <div style="font-size:11px;color:var(--mute);margin-top:2px" id="cr-status">—</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn cld sm" onclick="crSaveImage()">🖼 이미지로 저장</button>
+        <button class="btn ink sm" onclick="crShuffle()">🎲 무작위 배정</button>
+      </div>
+    </div>
+    <div class="cr-layout">
+      <div>
+        <div class="cr-board"><span class="en">BLACKBOARD</span><span class="ko">칠판</span></div>
+        <div class="cr-floorwrap" id="cr-floorwrap"><div class="cr-floor snap" id="cr-floor"></div></div>
+        <div class="cr-note">책상을 끌어서 옮기세요. 클릭해 고른 뒤 Delete 키를 눌러도 지워집니다.</div>
+      </div>
+      <div>
+        <div class="cr-panel">
+          <div class="cr-lbl">책상 배치</div>
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px">
+            <span style="font-size:12px;font-weight:600;color:var(--mute);white-space:nowrap">줄당</span>
+            <input class="cr-inp" type="number" id="cr-perrow" min="2" max="10" value="6" style="width:70px" onchange="crPerRow()">
+            <span style="font-size:12px;font-weight:600;color:var(--mute)">개씩</span>
+          </div>
+          <div class="cr-stack">
+            <button class="btn cld sm" onclick="crAutoLayout()">학생 수만큼 깔기</button>
+            <button class="btn cld sm" onclick="crAddDesk()">책상 하나 추가</button>
+            <button class="btn cld sm" onclick="crDelDesk()">선택한 책상 삭제</button>
+            <button class="btn cld sm" onclick="crClearDesks()">전체 지우기</button>
+          </div>
+          <label class="cr-check"><input type="checkbox" id="cr-snap" checked onchange="crToggleSnap()"> 격자에 맞춰 정렬</label>
+        </div>
+        <div class="cr-panel">
+          <div class="cr-lbl">배정 안 된 학생</div>
+          <div id="cr-unseated" style="font-size:12px;color:var(--mute);line-height:1.8">—</div>
+          <div class="cr-note">👥 학생 탭에 등록된 명단을 그대로 씁니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 번호 뽑기 -->
+<div id="pg-draw" class="page">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">NUMBER DRAW</div>
+        <div style="font-size:11px;color:var(--mute);margin-top:2px" id="cr-dstatus">—</div>
+      </div>
+      <button class="btn cld sm" onclick="crResetDraw()">🔄 처음부터 다시</button>
+    </div>
+    <div class="cr-layout">
+      <div>
+        <div class="cr-tile">
+          <div class="cap" id="cr-cap">NUMBER</div>
+          <div class="cr-digit" id="cr-digit">—</div>
+          <div class="cr-who" id="cr-dwho">학생을 고르면 번호가 나옵니다</div>
+        </div>
+        <div class="cr-lbl" style="margin:18px 0 7px">학생 선택 — 누르면 바로 뽑아요</div>
+        <div class="chips" id="cr-chips"></div>
+        <div class="cr-nums" id="cr-nums"></div>
+      </div>
+      <div>
+        <div class="cr-panel">
+          <div class="cr-lbl">번호 범위</div>
+          <div style="display:flex;align-items:center;gap:7px">
+            <span style="font-size:12px;font-weight:600;color:var(--mute)">1 ~</span>
+            <input class="cr-inp" type="number" id="cr-max" min="1" max="60" value="10" onchange="crSetMax()">
+          </div>
+          <div class="cr-note">범위를 바꾸면 뽑은 기록이 지워집니다.</div>
+        </div>
+        <div class="cr-panel">
+          <div class="cr-lbl">명단에 없는 사람</div>
+          <input class="cr-inp" type="text" id="cr-guest" placeholder="이름 입력 후 Enter" autocomplete="off">
+          <div class="cr-stack" style="margin-top:8px">
+            <button class="btn ink sm" onclick="crDrawGuest()">뽑기</button>
+          </div>
+        </div>
+        <div class="cr-panel">
+          <div class="cr-lbl">뽑은 순서</div>
+          <div id="cr-log"><div style="font-size:12px;color:var(--faint);padding:6px 0">아직 뽑은 번호가 없습니다.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- 주가 업데이트 모달 -->
 <div class="overlay" id="m-stock-update">
@@ -866,6 +1002,10 @@ function mergeData(remote) {
   if (!merged.stockLastUpdate) merged.stockLastUpdate = '';
   if (!merged.presets) merged.presets = JSON.parse(JSON.stringify(DEF.presets));
   if (!merged.nPreset) merged.nPreset = DEF.nPreset;
+  if (!merged.seating || merged.seating === DEF.seating) merged.seating = JSON.parse(JSON.stringify(DEF.seating));
+  if (!Array.isArray(merged.seating.desks)) merged.seating.desks = [];
+  if (!merged.draw || merged.draw === DEF.draw) merged.draw = JSON.parse(JSON.stringify(DEF.draw));
+  if (!Array.isArray(merged.draw.picks)) merged.draw.picks = [];
   return merged;
 }
 
@@ -934,9 +1074,13 @@ const DEF = {
   nPreset:10,
   portfolio:{},
   nStu:1,nSlot:7,nItem:9,nTx:1,
+  seating:{desks:[],perRow:6,snap:true},
+  draw:{max:10,picks:[]},
 };
 
 let D = JSON.parse(localStorage.getItem('bongdu')||'null') || JSON.parse(JSON.stringify(DEF));
+if(!D.seating)D.seating={desks:[],perRow:6,snap:true};
+if(!D.draw)D.draw={max:10,picks:[]};
 
 // 사진은 로컬에만 저장 (Firebase 용량 절약)
 function getPhotos() {
@@ -1075,7 +1219,7 @@ function go(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('pg-'+name).classList.add('on');
-  const idx=['spinner','students','shop','stock','history','ranking'].indexOf(name);
+  const idx=['spinner','students','shop','stock','history','ranking','seating','draw'].indexOf(name);
   if(idx>=0) document.querySelectorAll('.tab')[idx].classList.add('on');
   renderPage(name);
 }
@@ -1086,6 +1230,8 @@ function renderPage(name) {
   if(name==='stock')   {renderStock();}
   if(name==='history') {renderHistStuFilters();renderHistory();}
   if(name==='ranking') {renderRanking();}
+  if(name==='seating') {renderSeating();}
+  if(name==='draw')    {renderDraw();}
 }
 let stSelStu=null,stSelStock='ss',histType='all',histStu='all';
 const STOCK_BASE=500;
@@ -2124,6 +2270,261 @@ function hardReset(){
   if(USE_FB)fbSet('',JSON.parse(JSON.stringify(DEF)));
   location.reload();
 }
+
+
+/* ════════════════════════════════════
+   CLASSROOM — 자리배치 & 번호뽑기
+════════════════════════════════════ */
+const CR_W=1000, CR_H=620, CR_DW=110, CR_DH=66, CR_GAP=22, CR_RGAP=26, CR_GRID=20;
+let crScale=1, crSel=null, crRolling=false, crBound=false;
+
+function crEnsure(){
+  if(!D.seating||typeof D.seating!=='object'){D.seating={desks:[],perRow:6,snap:true};}
+  if(!Array.isArray(D.seating.desks))D.seating.desks=[];
+  if(!D.draw||typeof D.draw!=='object'){D.draw={max:10,picks:[]};}
+  if(!Array.isArray(D.draw.picks))D.draw.picks=[];
+  if(!D.draw.max)D.draw.max=10;
+}
+const crClamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+function crEsc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function crStu(sid){return D.students.find(s=>s.id===sid)||null;}
+
+/* ── 자리배치 ── */
+function crFit(){
+  const w=document.getElementById('cr-floorwrap');if(!w)return;
+  const fl=document.getElementById('cr-floor');
+  crScale=Math.min(1,(w.clientWidth||CR_W)/CR_W);
+  fl.style.transform='scale('+crScale+')';
+  w.style.height=(CR_H*crScale)+'px';
+}
+window.addEventListener('resize',()=>{if(currentPage==='seating')crFit();});
+
+function crSlot(i,perRow){
+  const cols=crClamp(perRow,2,10);
+  const totalW=cols*CR_DW+(cols-1)*CR_GAP;
+  const startX=Math.max(20,(CR_W-totalW)/2);
+  const r=Math.floor(i/cols), c=i%cols;
+  return {x:Math.round(startX+c*(CR_DW+CR_GAP)), y:Math.round(36+r*(CR_DH+CR_RGAP))};
+}
+
+function renderSeating(){
+  crEnsure();
+  document.getElementById('cr-perrow').value=D.seating.perRow||6;
+  document.getElementById('cr-snap').checked=D.seating.snap!==false;
+  const fl=document.getElementById('cr-floor');
+  fl.classList.toggle('snap',D.seating.snap!==false);
+  fl.innerHTML=D.seating.desks.map((d,i)=>{
+    const s=d.sid?crStu(d.sid):null;
+    const cls='cr-desk'+(s?'':' empty')+(crSel===i?' sel':'');
+    return '<div class="'+cls+'" data-i="'+i+'" style="left:'+d.x+'px;top:'+d.y+'px">'+
+      '<span class="n">'+String(i+1).padStart(2,'0')+'</span>'+
+      '<span class="nm">'+(s?crEsc(s.name):'—')+'</span>'+
+      (s?'<span class="bp">'+s.balance.toLocaleString()+'</span>':'')+
+    '</div>';
+  }).join('');
+  if(!crBound){crBindDrag();crBound=true;}
+  crFit();
+  const total=D.students.length, seated=D.seating.desks.filter(d=>d.sid&&crStu(d.sid)).length;
+  let st='학생 '+total+'명 · 책상 '+D.seating.desks.length+'개 · 배정 '+seated+'명';
+  if(total>D.seating.desks.length&&D.seating.desks.length)st+=' · <span style="color:var(--red);font-weight:700">책상 '+(total-D.seating.desks.length)+'개 부족</span>';
+  document.getElementById('cr-status').innerHTML=st;
+  const seatedIds=new Set(D.seating.desks.map(d=>d.sid).filter(Boolean));
+  const rest=D.students.filter(s=>!seatedIds.has(s.id));
+  document.getElementById('cr-unseated').innerHTML=rest.length?rest.map(s=>crEsc(s.name)).join(', '):'없음 — 모두 앉았습니다 ✓';
+}
+
+function crBindDrag(){
+  const fl=document.getElementById('cr-floor');
+  let drag=null;
+  fl.addEventListener('pointerdown',e=>{
+    const el=e.target.closest('.cr-desk');if(!el)return;
+    const i=+el.dataset.i, d=D.seating.desks[i];if(!d)return;
+    crSel=i;
+    fl.querySelectorAll('.cr-desk').forEach(n=>n.classList.toggle('sel',+n.dataset.i===i));
+    const r=fl.getBoundingClientRect();
+    drag={el,d,ox:(e.clientX-r.left)/crScale-d.x,oy:(e.clientY-r.top)/crScale-d.y};
+    el.classList.add('drag');el.setPointerCapture(e.pointerId);
+  });
+  fl.addEventListener('pointermove',e=>{
+    if(!drag)return;
+    const r=fl.getBoundingClientRect();
+    let x=(e.clientX-r.left)/crScale-drag.ox, y=(e.clientY-r.top)/crScale-drag.oy;
+    if(D.seating.snap!==false){x=Math.round(x/CR_GRID)*CR_GRID;y=Math.round(y/CR_GRID)*CR_GRID;}
+    drag.d.x=crClamp(Math.round(x),0,CR_W-CR_DW);
+    drag.d.y=crClamp(Math.round(y),0,CR_H-CR_DH);
+    drag.el.style.left=drag.d.x+'px';drag.el.style.top=drag.d.y+'px';
+  });
+  const end=()=>{if(!drag)return;drag.el.classList.remove('drag');drag=null;save();};
+  fl.addEventListener('pointerup',end);
+  fl.addEventListener('pointercancel',end);
+}
+
+document.addEventListener('keydown',e=>{
+  if(currentPage!=='seating')return;
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName))return;
+  if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();crDelDesk();}
+});
+
+function crLayout(n){
+  crEnsure();
+  const perRow=parseInt(document.getElementById('cr-perrow').value,10)||6;
+  const keep=D.seating.desks.map(d=>d.sid);
+  D.seating.perRow=perRow;
+  D.seating.desks=[];
+  for(let i=0;i<n;i++){
+    const p=crSlot(i,perRow);
+    D.seating.desks.push({x:p.x,y:p.y,sid:keep[i]||null});
+  }
+  crSel=null;renderSeating();save();
+}
+function crAutoLayout(){
+  crEnsure();
+  if(!D.students.length){toast('먼저 👥 학생 탭에서 명단을 등록해 주세요.');return;}
+  crLayout(D.students.length);
+}
+function crPerRow(){crEnsure();if(D.seating.desks.length)crLayout(D.seating.desks.length);else{D.seating.perRow=parseInt(document.getElementById('cr-perrow').value,10)||6;save();}}
+function crAddDesk(){
+  crEnsure();
+  const perRow=parseInt(document.getElementById('cr-perrow').value,10)||6;
+  const p=crSlot(D.seating.desks.length,perRow);
+  D.seating.desks.push({x:crClamp(p.x,0,CR_W-CR_DW),y:crClamp(p.y,0,CR_H-CR_DH),sid:null});
+  renderSeating();save();
+}
+function crDelDesk(){
+  crEnsure();
+  if(crSel===null||!D.seating.desks[crSel]){toast('지울 책상을 먼저 클릭하세요.');return;}
+  D.seating.desks.splice(crSel,1);crSel=null;renderSeating();save();
+}
+function crClearDesks(){
+  crEnsure();
+  if(!D.seating.desks.length)return;
+  if(!confirm('책상을 전부 지울까요?'))return;
+  D.seating.desks=[];crSel=null;renderSeating();save();
+}
+function crToggleSnap(){crEnsure();D.seating.snap=document.getElementById('cr-snap').checked;renderSeating();save();}
+
+function crShuffle(){
+  crEnsure();
+  if(!D.students.length){toast('먼저 👥 학생 탭에서 명단을 등록해 주세요.');return;}
+  if(!D.seating.desks.length){crLayout(D.students.length);}
+  const pool=D.students.map(s=>s.id);
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  const order=D.seating.desks.map((d,i)=>i);
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  D.seating.desks.forEach(d=>d.sid=null);
+  order.forEach((di,k)=>{if(k<pool.length)D.seating.desks[di].sid=pool[k];});
+  document.querySelectorAll('#cr-floor .cr-desk').forEach(n=>n.classList.add('fade'));
+  setTimeout(()=>{renderSeating();save();toast('자리를 새로 섞었어요 🎲');},200);
+}
+
+function crSaveImage(){
+  crEnsure();
+  const S=2,BH=56,cv=document.createElement('canvas');
+  cv.width=CR_W*S;cv.height=(CR_H+BH)*S;
+  const c=cv.getContext('2d');c.scale(S,S);
+  c.fillStyle='#f5f5f5';c.fillRect(0,0,CR_W,CR_H+BH);
+  c.fillStyle='#111111';c.fillRect(0,0,CR_W,BH);
+  c.fillStyle='#ffffff';c.textAlign='center';c.textBaseline='middle';
+  c.font='700 17px "Noto Sans KR",sans-serif';
+  c.fillText('B L A C K B O A R D    칠 판',CR_W/2,BH/2);
+  D.seating.desks.forEach((d,i)=>{
+    const s=d.sid?crStu(d.sid):null, x=d.x, y=d.y+BH;
+    c.fillStyle='#ffffff';c.fillRect(x,y,CR_DW,CR_DH);
+    c.strokeStyle='#d2d2d7';c.lineWidth=1.5;c.strokeRect(x+.75,y+.75,CR_DW-1.5,CR_DH-1.5);
+    c.fillStyle='#a1a1a6';c.font='700 10px "Noto Sans KR",sans-serif';c.textAlign='left';
+    c.fillText(String(i+1).padStart(2,'0'),x+8,y+12);
+    c.fillStyle='#111111';c.font='700 15px "Noto Sans KR",sans-serif';c.textAlign='center';
+    c.fillText(s?s.name:'—',x+CR_DW/2,y+CR_DH/2+2);
+  });
+  cv.toBlob(b=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download='자리배치.png';a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+    toast('이미지를 저장했어요 ✓');
+  });
+}
+
+/* ── 번호 뽑기 ── */
+function crUsed(){crEnsure();return D.draw.picks.map(p=>p.n);}
+function crRemaining(){
+  const u=new Set(crUsed()),out=[];
+  for(let i=1;i<=D.draw.max;i++)if(!u.has(i))out.push(i);
+  return out;
+}
+function renderDraw(){
+  crEnsure();
+  document.getElementById('cr-max').value=D.draw.max;
+  const rem=crRemaining();
+  let st='남은 번호 '+rem.length+'개 / 전체 '+D.draw.max+'개';
+  if(!rem.length&&D.draw.picks.length)st+=' · <span style="color:var(--red);font-weight:700">모두 뽑았습니다</span>';
+  document.getElementById('cr-dstatus').innerHTML=st;
+
+  const done={};D.draw.picks.forEach(p=>{if(p.sid)done[p.sid]=p.n;});
+  document.getElementById('cr-chips').innerHTML=D.students.length
+    ? D.students.map(s=>done[s.id]!==undefined
+        ? '<button class="chip done">'+crEsc(s.name)+' · '+done[s.id]+'</button>'
+        : '<button class="chip" onclick="crDrawStudent('+s.id+')">'+crEsc(s.name)+'</button>').join('')
+    : '<span style="font-size:12px;color:var(--faint)">👥 학생 탭에서 명단을 등록하면 여기에 나옵니다.</span>';
+
+  const u=new Set(crUsed());
+  let nums='';
+  for(let i=1;i<=D.draw.max;i++)nums+='<div class="cr-num'+(u.has(i)?' used':'')+'">'+i+'</div>';
+  document.getElementById('cr-nums').innerHTML=nums;
+
+  document.getElementById('cr-log').innerHTML=D.draw.picks.length
+    ? D.draw.picks.slice().reverse().map(p=>'<div class="cr-row"><span class="nm2">'+crEsc(p.name)+'</span><span class="v">'+p.n+'</span></div>').join('')
+    : '<div style="font-size:12px;color:var(--faint);padding:6px 0">아직 뽑은 번호가 없습니다.</div>';
+}
+function crSetMax(){
+  crEnsure();
+  const v=crClamp(parseInt(document.getElementById('cr-max').value,10)||10,1,60);
+  if(D.draw.picks.length&&!confirm('범위를 바꾸면 지금까지 뽑은 기록이 지워집니다. 계속할까요?')){
+    document.getElementById('cr-max').value=D.draw.max;return;
+  }
+  D.draw.max=v;D.draw.picks=[];crResetTile();renderDraw();save();
+}
+function crResetTile(){
+  document.getElementById('cr-digit').textContent='—';
+  document.getElementById('cr-dwho').textContent='학생을 고르면 번호가 나옵니다';
+  document.getElementById('cr-cap').textContent='NUMBER';
+}
+function crResetDraw(){
+  crEnsure();
+  if(!D.draw.picks.length)return;
+  if(!confirm('뽑은 기록을 모두 지울까요?'))return;
+  D.draw.picks=[];crResetTile();renderDraw();save();
+}
+function crDrawStudent(sid){const s=crStu(sid);if(!s)return;crDoDraw(s.name,sid);}
+function crDrawGuest(){
+  const el=document.getElementById('cr-guest');
+  const name=el.value.trim();
+  if(!name){el.focus();return;}
+  crDoDraw(name,null);el.value='';
+}
+function crDoDraw(name,sid){
+  crEnsure();
+  if(crRolling)return;
+  const rem=crRemaining();
+  if(!rem.length){toast('남은 번호가 없어요. 처음부터 다시 눌러 주세요.');return;}
+  crRolling=true;
+  const digit=document.getElementById('cr-digit');
+  document.getElementById('cr-dwho').textContent=name;
+  document.getElementById('cr-cap').textContent='DRAWING…';
+  digit.classList.add('roll');
+  const pick=rem[Math.floor(Math.random()*rem.length)],t0=Date.now();
+  const iv=setInterval(()=>{
+    digit.textContent=rem[Math.floor(Math.random()*rem.length)];
+    if(Date.now()-t0>950){
+      clearInterval(iv);
+      digit.classList.remove('roll');digit.textContent=pick;
+      document.getElementById('cr-cap').textContent='NUMBER';
+      D.draw.picks.push({name,sid,n:pick});
+      crRolling=false;renderDraw();save();
+    }
+  },62);
+}
+(function(){const g=document.getElementById('cr-guest');
+if(g)g.addEventListener('keydown',e=>{if(e.key==='Enter')crDrawGuest();});})();
 
 /* ════════════════════════════════════
    INIT
