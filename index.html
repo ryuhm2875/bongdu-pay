@@ -356,6 +356,9 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 .cr-desk.drag{cursor:grabbing;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.18);}
 .cr-desk .nm{transition:opacity .22s;}
 .cr-desk.fade .nm{opacity:0;}
+.cr-desk.pick{z-index:4;animation:crPick 1.6s ease-out;}
+@keyframes crPick{0%{transform:scale(.85);background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 0 rgba(201,168,76,.7);}35%{transform:scale(1.14);background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 14px rgba(201,168,76,0);}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(201,168,76,0);}}
+#cr-pick-btn:disabled{opacity:.35;cursor:not-allowed;transform:none;}
 .cr-panel{background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);padding:14px;}
 .cr-panel+.cr-panel{margin-top:10px;}
 .cr-lbl{font-size:10px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
@@ -662,6 +665,7 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
       </div>
       <div style="display:flex;gap:6px">
         <button class="btn cld sm" onclick="crSaveImage()">🖼 이미지로 저장</button>
+        <button class="btn ink sm" id="cr-pick-btn" onclick="crPickOne()">🎯 한 명 뽑기</button>
         <button class="btn ink sm" onclick="crShuffle()">🎲 무작위 배정</button>
       </div>
     </div>
@@ -2331,6 +2335,8 @@ function renderSeating(){
   const seatedIds=new Set(D.seating.desks.map(d=>d.sid).filter(Boolean));
   const rest=D.students.filter(s=>!seatedIds.has(s.id));
   document.getElementById('cr-unseated').innerHTML=rest.length?rest.map(s=>crEsc(s.name)).join(', '):'없음 — 모두 앉았습니다 ✓';
+  const pb=document.getElementById('cr-pick-btn');
+  if(pb)pb.disabled=!total||!rest.length;
 }
 
 function crBindDrag(){
@@ -2415,6 +2421,29 @@ function crShuffle(){
   order.forEach((di,k)=>{if(k<pool.length)D.seating.desks[di].sid=pool[k];});
   document.querySelectorAll('#cr-floor .cr-desk').forEach(n=>n.classList.add('fade'));
   setTimeout(()=>{renderSeating();save();toast('자리를 새로 섞었어요 🎲');},200);
+}
+
+/* 한 명 뽑기: 아직 안 앉은 학생 1명을 빈 책상 1곳에 무작위로 앉힌다 */
+function crPickOne(){
+  crEnsure();
+  if(!D.students.length){toast('먼저 👥 학생 탭에서 명단을 등록해 주세요.');return;}
+  if(!D.seating.desks.length){crLayout(D.students.length);}
+  const isSeated=d=>!!(d.sid&&crStu(d.sid));
+  const seatedIds=new Set(D.seating.desks.filter(isSeated).map(d=>d.sid));
+  const rest=D.students.filter(s=>!seatedIds.has(s.id));
+  if(!rest.length){toast('모두 앉았습니다 ✓');return;}
+  const empties=[];
+  D.seating.desks.forEach((d,i)=>{if(!isSeated(d))empties.push(i);});
+  if(!empties.length){toast('빈 책상이 없어요. 책상을 추가해 주세요.');return;}
+  const stu=rest[Math.floor(Math.random()*rest.length)];
+  const di=empties[Math.floor(Math.random()*empties.length)];
+  D.seating.desks[di].sid=stu.id;
+  crSel=null;
+  renderSeating();
+  const el=document.querySelector('#cr-floor .cr-desk[data-i="'+di+'"]');
+  if(el){el.classList.add('pick');setTimeout(()=>el.classList.remove('pick'),1700);}
+  save();
+  toast(stu.name+' → '+String(di+1).padStart(2,'0')+'번 책상 🎯');
 }
 
 function crSaveImage(){
