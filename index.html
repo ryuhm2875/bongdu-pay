@@ -382,7 +382,66 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 .cr-row .nm2{font-size:13px;font-weight:700;}
 .cr-row .v{font-family:var(--D);font-size:22px;color:var(--gold);letter-spacing:1px;}
 .chip.done{opacity:.35;cursor:default;}
+/* ── EVENT (2차 시험 대박 이벤트) ── */
+.ev-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:var(--rmd);overflow:hidden;margin-bottom:12px;}
+.ev-hcell{background:var(--canvas);padding:12px 16px;}
+.ev-hl{font-size:9px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+.ev-hv{font-family:var(--D);font-size:26px;letter-spacing:.5px;line-height:1.15;}
+.ev-hs{font-size:10px;color:var(--mute);margin-top:3px;}
+.ev-pizza{display:flex;align-items:center;gap:14px;border-radius:var(--rlg);padding:15px 20px;margin-bottom:12px;background:var(--canvas);border:1.5px solid var(--hair);}
+.ev-pizza.ok{background:linear-gradient(135deg,#fff8ea,#f2fbf5);border-color:var(--green);}
+.ev-pizza.warn{border-color:var(--gold);background:#fffdf6;}
+.ev-pizza .ev-pz-ico{font-size:34px;line-height:1;}
+.ev-pizza .ev-pz-ttl{font-family:var(--D);font-size:25px;letter-spacing:1px;line-height:1.15;}
+.ev-pizza.ok .ev-pz-ttl{color:var(--green);}
+.ev-pizza .ev-pz-sub{font-size:11px;color:var(--mute);margin-top:3px;}
+.ev-panel{background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);padding:13px 14px;margin-bottom:12px;}
+.ev-panel-h{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.ev-rv-row{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:.5px solid var(--hair);}
+.ev-rv-row:last-child{border-bottom:none;}
+.ev-rv-n{font-size:10px;font-weight:700;color:var(--faint);width:18px;flex-shrink:0;}
+.ev-rv-inp{flex:0 1 230px;min-width:0;height:32px;border:1.5px solid var(--hair);border-radius:var(--rmd);padding:0 9px;font-size:12px;font-family:var(--B);background:var(--cloud);color:var(--ink);outline:none;}
+.ev-rv-inp:focus{border-color:var(--ink);background:var(--canvas);}
+.ev-rv-inp.bad{border-color:var(--red);background:#fff5f5;}
+.ev-rv-vs{font-family:var(--D);font-size:13px;color:var(--faint);flex-shrink:0;width:22px;text-align:center;}
+.ev-rv-ok{font-size:12px;width:16px;text-align:center;flex-shrink:0;color:var(--green);}
+.ev-rv-ok.q{color:var(--faint);}
+.ev-rv-del{border:none;background:none;color:var(--faint);font-size:12px;cursor:pointer;padding:3px 6px;flex-shrink:0;margin-left:2px;}
+.ev-rv-del:hover{color:var(--red);}
+.ev-note{font-size:10.5px;color:var(--mute);line-height:1.7;background:var(--canvas);border:1px dashed var(--hair);border-radius:var(--rmd);padding:9px 12px;margin-bottom:12px;}
+.ev-note b{color:var(--ink);}
+.ev-tw{overflow-x:auto;background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);}
+.ev-tbl{border-collapse:collapse;width:100%;min-width:1040px;font-size:12px;}
+.ev-tbl th{background:var(--cloud);color:var(--mute);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:8px 6px;border-bottom:1px solid var(--hair);white-space:nowrap;text-align:center;}
+.ev-tbl td{padding:4px 6px;border-bottom:.5px solid var(--hair);text-align:center;vertical-align:middle;}
+.ev-tbl tr:last-child td{border-bottom:none;}
+.ev-tbl td.l{text-align:left;}
+.ev-nm{font-weight:700;font-size:12.5px;white-space:nowrap;}
+.ev-chip{display:inline-block;margin-left:4px;font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:9999px;background:#e8f5ef;color:var(--green);vertical-align:middle;}
+.ev-bp{font-size:10px;color:var(--mute);margin-top:1px;white-space:nowrap;}
+.ev-inp{width:52px;height:30px;border:1.5px solid var(--hair);border-radius:8px;padding:0 3px;font-size:12px;font-family:var(--B);text-align:center;background:var(--cloud);color:var(--ink);outline:none;}
+.ev-inp:focus{border-color:var(--gold);background:var(--canvas);}
+.ev-inp::-webkit-inner-spin-button,.ev-inp::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+.ev-inp{-moz-appearance:textfield;appearance:textfield;}
+.ev-inp.k4{width:41px;font-size:11px;}
+.ev-q4w{display:flex;align-items:center;justify-content:center;gap:7px;}
+.ev-q4{display:flex;gap:3px;justify-content:center;}
+.ev-fl{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.ev-fl i{font-style:normal;font-size:8px;color:var(--faint);line-height:1;}
+.ev-sum{display:inline-block;margin-top:0;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:9999px;background:var(--cloud2);color:var(--mute);white-space:nowrap;min-width:34px;text-align:center;}
+.ev-sum.up{background:#e8f5ef;color:var(--green);}
+.ev-sum.dn{background:#fdeaea;color:var(--red);}
+.ev-det{font-size:9.5px;color:var(--mute);line-height:1.55;text-align:left;min-width:150px;}
+.ev-fin{font-weight:700;font-size:12.5px;white-space:nowrap;}
+.ev-dlt{display:block;font-size:9.5px;font-weight:700;margin-top:1px;white-space:nowrap;}
+.ev-dlt.up{color:var(--green);}
+.ev-dlt.dn{color:var(--red);}
+.ev-dlt.zero{color:var(--faint);font-weight:500;}
+.ev-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+.ev-settled{font-size:11px;color:var(--green);font-weight:700;margin-left:auto;}
 @media(max-width:1080px){.cr-layout{grid-template-columns:1fr;}}
+@media(max-width:980px){.ev-hero{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){nav{height:auto;flex-wrap:wrap;padding:8px 12px;gap:6px;}.tabs{flex-wrap:wrap;gap:3px;}}
 </style>
 </head>
 <body>
@@ -479,6 +538,7 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
     <button class="tab" onclick="go('ranking')">🏆 랭킹</button>
     <button class="tab" onclick="go('seating')">🪑 자리배치</button>
     <button class="tab" onclick="go('draw')">🎲 번호뽑기</button>
+    <button class="tab" onclick="go('event')">🎯 이벤트</button>
   </div>
 </nav>
 
@@ -748,6 +808,70 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 </div>
 
 
+<!-- 이벤트 -->
+<div id="pg-event" class="page">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">EVENT SETTLEMENT</div>
+        <div style="font-size:11px;color:var(--mute);margin-top:2px">2026. 2학기 2차 시험 기념 · 봉두페이 대박 이벤트 자동 정산</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn cld sm" onclick="evResetScores()">입력값 초기화</button>
+        <button class="btn gld sm" onclick="evSettleAll()">🎯 전체 정산 일괄 지급</button>
+      </div>
+    </div>
+
+    <div class="ev-pizza" id="ev-pizza"></div>
+    <div class="ev-hero" id="ev-hero"></div>
+
+    <div class="ev-panel">
+      <div class="ev-panel-h">
+        <div>
+          <div class="cr-lbl" style="margin-bottom:2px">맞수 대진 <span id="ev-rv-count" style="color:var(--gold)"></span></div>
+          <div style="font-size:10px;color:var(--faint)">이름은 👥 학생 명단과 자동으로 맞춰집니다. 동점은 무승부(미지급).</div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button class="btn cld sm" id="ev-rv-toggle" onclick="evToggleRivals()">접기</button>
+          <button class="btn gst sm" onclick="evResetRivals()">기본 5쌍으로 초기화</button>
+          <button class="btn ink sm" onclick="evAddRival()">+ 쌍 추가</button>
+        </div>
+      </div>
+      <div id="ev-rv-wrap"></div>
+      <datalist id="ev-stu-list"></datalist>
+    </div>
+
+    <div class="ev-note">
+      <b>정산 규칙</b> · 국어 2차 <b>100점 +20,000</b> · 국어 반 평균 <b>70점↑ 🍕 피자 파티</b> · 국어 맞수 승 <b>+8,000</b> · 1차 대비 전체 평균 상승 <b>+5,000</b> · 평균 맞수 승 <b>+5,000</b> · 4과목(수·과·영·역) 등락 합계 <b>%만큼 보너스 지급 전 잔액</b>에 적용 · 동점은 무승부(미지급) · 최종 잔액은 0 BP 아래로 내려가지 않습니다.
+    </div>
+
+    <div class="ev-tw">
+      <table class="ev-tbl">
+        <thead>
+          <tr>
+            <th style="text-align:left">학생</th>
+            <th>국어 1차</th>
+            <th>국어 2차</th>
+            <th>평균 1차</th>
+            <th>평균 2차</th>
+            <th>4과목 등락 (수·과·영·역)</th>
+            <th style="text-align:left">보너스 상세</th>
+            <th>예상 최종 BP</th>
+          </tr>
+        </thead>
+        <tbody id="ev-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="ev-acts">
+      <button class="btn cld sm" onclick="evResetScores()">입력값 초기화</button>
+      <button class="btn gld" onclick="evSettleAll()">🎯 전체 정산 일괄 지급</button>
+      <span class="ev-settled" id="ev-settled"></span>
+    </div>
+  </div>
+</div>
+
+
 <!-- 주가 업데이트 모달 -->
 <div class="overlay" id="m-stock-update">
   <div class="modal" style="max-width:520px;width:95vw;">
@@ -1010,6 +1134,11 @@ function mergeData(remote) {
   if (!Array.isArray(merged.seating.desks)) merged.seating.desks = [];
   if (!merged.draw || merged.draw === DEF.draw) merged.draw = JSON.parse(JSON.stringify(DEF.draw));
   if (!Array.isArray(merged.draw.picks)) merged.draw.picks = [];
+  if (!merged.event || merged.event === DEF.event) merged.event = JSON.parse(JSON.stringify(DEF.event));
+  if (!merged.event.scores || typeof merged.event.scores !== 'object' || Array.isArray(merged.event.scores)) merged.event.scores = {};
+  if (!Array.isArray(merged.event.rivals)) merged.event.rivals = JSON.parse(JSON.stringify(DEF.event.rivals));
+  if (typeof merged.event.settledAt !== 'string') merged.event.settledAt = '';
+  if (!merged.event.applied || typeof merged.event.applied !== 'object' || Array.isArray(merged.event.applied)) merged.event.applied = {};
   return merged;
 }
 
@@ -1080,11 +1209,22 @@ const DEF = {
   nStu:1,nSlot:7,nItem:9,nTx:1,
   seating:{desks:[],perRow:6,snap:true},
   draw:{max:10,picks:[]},
+  event:{
+    scores:{},
+    rivals:[['이정율','하정훈'],['김태연','전도윤'],['신지아','박강빈'],['장은우','이내영'],['장효빈','김지환']],
+    settledAt:'',
+    applied:{},
+  },
 };
 
 let D = JSON.parse(localStorage.getItem('bongdu')||'null') || JSON.parse(JSON.stringify(DEF));
 if(!D.seating)D.seating={desks:[],perRow:6,snap:true};
 if(!D.draw)D.draw={max:10,picks:[]};
+if(!D.event||typeof D.event!=='object')D.event=JSON.parse(JSON.stringify(DEF.event));
+if(!D.event.scores||typeof D.event.scores!=='object'||Array.isArray(D.event.scores))D.event.scores={};
+if(!Array.isArray(D.event.rivals))D.event.rivals=JSON.parse(JSON.stringify(DEF.event.rivals));
+if(typeof D.event.settledAt!=='string')D.event.settledAt='';
+if(!D.event.applied||typeof D.event.applied!=='object'||Array.isArray(D.event.applied))D.event.applied={};
 
 // 사진은 로컬에만 저장 (Firebase 용량 절약)
 function getPhotos() {
@@ -1223,7 +1363,7 @@ function go(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('pg-'+name).classList.add('on');
-  const idx=['spinner','students','shop','stock','history','ranking','seating','draw'].indexOf(name);
+  const idx=['spinner','students','shop','stock','history','ranking','seating','draw','event'].indexOf(name);
   if(idx>=0) document.querySelectorAll('.tab')[idx].classList.add('on');
   renderPage(name);
 }
@@ -1236,6 +1376,7 @@ function renderPage(name) {
   if(name==='ranking') {renderRanking();}
   if(name==='seating') {renderSeating();}
   if(name==='draw')    {renderDraw();}
+  if(name==='event')   {renderEvent();}
 }
 let stSelStu=null,stSelStock='ss',histType='all',histStu='all';
 const STOCK_BASE=500;
@@ -2554,6 +2695,381 @@ function crDoDraw(name,sid){
 }
 (function(){const g=document.getElementById('cr-guest');
 if(g)g.addEventListener('keydown',e=>{if(e.key==='Enter')crDrawGuest();});})();
+
+/* ════════════════════════════════════
+   EVENT — 2026 2학기 2차 시험 기념 대박 이벤트
+════════════════════════════════════ */
+let evRivalsOpen=true, evSaveTimer=null;
+const EV_DIFFS=['mathDiff','sciDiff','engDiff','histDiff'];
+const EV_DLABEL={mathDiff:'수',sciDiff:'과',engDiff:'영',histDiff:'역'};
+
+function evEnsure(){
+  if(D.event===DEF.event)D.event=JSON.parse(JSON.stringify(DEF.event));
+  if(!D.event||typeof D.event!=='object')D.event=JSON.parse(JSON.stringify(DEF.event));
+  if(!D.event.scores||typeof D.event.scores!=='object'||Array.isArray(D.event.scores))D.event.scores={};
+  if(!Array.isArray(D.event.rivals))D.event.rivals=JSON.parse(JSON.stringify(DEF.event.rivals));
+  if(typeof D.event.settledAt!=='string')D.event.settledAt='';
+  if(!D.event.applied||typeof D.event.applied!=='object'||Array.isArray(D.event.applied))D.event.applied={};
+}
+function evNum(v){
+  if(v===null||v===undefined||v==='')return null;
+  const n=parseFloat(v);return Number.isFinite(n)?n:null;
+}
+function evScore(id){evEnsure();return D.event.scores[String(id)]||{};}
+const EV_FIELDS=['kor1','kor2','avg1','avg2','mathDiff','sciDiff','engDiff','histDiff'];
+function evSig(sc){return EV_FIELDS.map(f=>{const n=evNum(sc[f]);return n===null?'':n;}).join('|');}
+function evSigned(n){return (n>0?'+':'')+n.toLocaleString();}
+/* 입력이 멈춘 뒤 한 번만 저장 (Firebase 전체 PUT 부담 줄이기) */
+function evSaveSoon(){
+  localSave();
+  clearTimeout(evSaveTimer);
+  if(!USE_FB)return;
+  evSaveTimer=setTimeout(()=>{evSaveTimer=null;save();},800);
+}
+
+/* 맞수 대진 → 학생별 승/패/무 판정 */
+function evRivalMaps(){
+  evEnsure();
+  const byName={};
+  D.students.forEach(s=>{
+    const n=(s.name||'').trim();
+    if(n&&byName[n]===undefined)byName[n]=s;
+  });
+  const kor={},avg={};
+  let kDone=0,aDone=0;
+  D.event.rivals.forEach(pr=>{
+    if(!Array.isArray(pr))return;
+    const a=byName[String(pr[0]||'').trim()], b=byName[String(pr[1]||'').trim()];
+    if(!a||!b||a.id===b.id)return;
+    const sa=evScore(a.id), sb=evScore(b.id);
+    const ka=evNum(sa.kor2), kb=evNum(sb.kor2);
+    if(ka!==null&&kb!==null){
+      const r=ka>kb?['win','lose']:(ka<kb?['lose','win']:['tie','tie']);
+      kor[a.id]=r[0];kor[b.id]=r[1];kDone++;
+    }
+    const ma=evNum(sa.avg2), mb=evNum(sb.avg2);
+    if(ma!==null&&mb!==null){
+      const r=ma>mb?['win','lose']:(ma<mb?['lose','win']:['tie','tie']);
+      avg[a.id]=r[0];avg[b.id]=r[1];aDone++;
+    }
+  });
+  return {byName,kor,avg,kDone,aDone};
+}
+
+/* 한 학생 정산 계산 */
+function evCalc(id,rm){
+  const s=D.students.find(x=>x.id===id);if(!s)return null;
+  const sc=evScore(id);
+  const kor2=evNum(sc.kor2), avg1=evNum(sc.avg1), avg2=evNum(sc.avg2);
+  const dvals=EV_DIFFS.map(f=>evNum(sc[f]));
+  const hasDiff=dvals.some(v=>v!==null);
+  const sumDiff=dvals.reduce((a,v)=>a+(v||0),0);
+  const pct=Math.round(s.balance*(sumDiff/100));
+  const avgUp=(avg1!==null&&avg2!==null&&avg2>avg1);
+  let bonus=0;
+  if(kor2===100)bonus+=20000;
+  if(avgUp)bonus+=5000;
+  const rk=rm.kor[id]||null, ra=rm.avg[id]||null;
+  if(rk==='win')bonus+=8000;
+  if(ra==='win')bonus+=5000;
+  const final=Math.max(0,s.balance+pct+bonus);
+  const ap=D.event.applied[String(id)];
+  const settled=!!ap&&ap.sig===evSig(sc);
+  return {s,sc,kor2,avg1,avg2,hasDiff,sumDiff,pct,bonus,avgUp,rk,ra,final,delta:final-s.balance,hasInput:Object.keys(sc).length>0,settled,appliedDelta:settled?(parseFloat(ap.delta)||0):0,appliedAt:settled?(ap.at||''):''};
+}
+
+function evCompute(){
+  evEnsure();
+  const rm=evRivalMaps();
+  const rows=D.students.map(s=>evCalc(s.id,rm)).filter(Boolean);
+  const kors=rows.map(r=>r.kor2).filter(v=>v!==null);
+  const korAvg=kors.length?kors.reduce((a,b)=>a+b,0)/kors.length:null;
+  const targets=rows.filter(r=>r.hasInput);
+  let total=0,earn=0,cut=0;
+  targets.forEach(r=>{
+    total+=r.delta;
+    if(r.delta>0)earn+=r.delta; else cut+=r.delta;
+  });
+  return {rm,rows,targets,korAvg,korCnt:kors.length,total,earn,cut};
+}
+
+function evDetHtml(r){
+  const p=[];
+  if(r.settled)p.push(`<b style="color:var(--green)">✅ ${r.appliedAt} 정산 반영 ${evSigned(r.appliedDelta)}</b>`);
+  if(r.kor2===100)p.push('<b>국어 100점</b> +20,000');
+  if(r.avgUp)p.push('<b>평균 상승</b> +5,000');
+  if(r.rk==='win')p.push('<b>국어 맞수 승</b> +8,000');
+  if(r.ra==='win')p.push('<b>평균 맞수 승</b> +5,000');
+  if(r.rk==='tie')p.push('국어 맞수 무승부');
+  if(r.rk==='lose')p.push('국어 맞수 패');
+  if(r.ra==='tie')p.push('평균 맞수 무승부');
+  if(r.ra==='lose')p.push('평균 맞수 패');
+  if(r.hasDiff)p.push(`4과목 ${evSigned(r.sumDiff)}% → <b style="color:${r.pct>0?'var(--green)':(r.pct<0?'var(--red)':'var(--mute)')}">${evSigned(r.pct)}</b>`);
+  return p.length?p.join('<br>'):'—';
+}
+
+function evRowHtml(r){
+  const s=r.s, sc=r.sc, id=s.id;
+  const val=f=>{const n=evNum(sc[f]);return n===null?'':n;};
+  const q=EV_DIFFS.map(f=>`<span class="ev-fl"><i>${EV_DLABEL[f]}</i><input class="ev-inp k4" type="number" step="0.1" data-key="s-${id}-${f}" value="${val(f)}" oninput="evInput(this)" aria-label="${EV_DLABEL[f]} 등락"></span>`).join('');
+  return `<tr>
+    <td class="l"><div class="ev-nm">${crEsc(s.name)}${r.settled?'<span class="ev-chip">✅ 정산</span>':''}</div><div class="ev-bp">현재 ${s.balance.toLocaleString()} BP</div></td>
+    <td><input class="ev-inp" type="number" min="0" max="100" step="1" data-key="s-${id}-kor1" value="${val('kor1')}" oninput="evInput(this)" aria-label="국어 1차"></td>
+    <td><input class="ev-inp" type="number" min="0" max="100" step="1" data-key="s-${id}-kor2" value="${val('kor2')}" oninput="evInput(this)" aria-label="국어 2차"></td>
+    <td><input class="ev-inp" type="number" min="0" max="100" step="0.1" data-key="s-${id}-avg1" value="${val('avg1')}" oninput="evInput(this)" aria-label="1차 평균"></td>
+    <td><input class="ev-inp" type="number" min="0" max="100" step="0.1" data-key="s-${id}-avg2" value="${val('avg2')}" oninput="evInput(this)" aria-label="2차 평균"></td>
+    <td><div class="ev-q4w"><div class="ev-q4">${q}</div><span class="ev-sum" id="ev-sum-${id}">0%</span></div></td>
+    <td class="l ev-det" id="ev-det-${id}">—</td>
+    <td><span class="ev-fin" id="ev-fin-${id}">${s.balance.toLocaleString()}</span><span class="ev-dlt zero" id="ev-dlt-${id}">변동 없음</span></td>
+  </tr>`;
+}
+
+function evSummary(c){
+  const hero=document.getElementById('ev-hero');
+  const settledN=c.rows.filter(r=>r.settled).length;
+  if(hero){
+    const ok=c.korAvg!==null&&c.korAvg>=70;
+    hero.innerHTML=`
+      <div class="ev-hcell"><div class="ev-hl">국어 반 평균 (2차)</div><div class="ev-hv" style="color:${ok?'var(--green)':'var(--ink)'}">${c.korAvg===null?'—':c.korAvg.toFixed(1)+'점'}</div><div class="ev-hs">${c.korCnt}명 입력 · 기준 70점</div></div>
+      <div class="ev-hcell"><div class="ev-hl">정산 대상</div><div class="ev-hv">${c.targets.length}<span style="font-size:14px;font-family:var(--B);color:var(--mute)"> / ${D.students.length}명</span></div><div class="ev-hs">${settledN?'정산 완료 '+settledN+'명 · ':''}점수가 입력된 학생</div></div>
+      <div class="ev-hcell"><div class="ev-hl">총 변동 예정${settledN?' (재정산 시)':''}</div><div class="ev-hv" style="color:${c.total>0?'var(--green)':(c.total<0?'var(--red)':'var(--ink)')}">${evSigned(c.total)}<span style="font-size:13px;font-family:var(--B);color:var(--mute)"> BP</span></div><div class="ev-hs">지급 +${c.earn.toLocaleString()} · 차감 ${c.cut.toLocaleString()}</div></div>
+      <div class="ev-hcell"><div class="ev-hl">맞수 판정 (국어)</div><div class="ev-hv">${c.rm.kDone}<span style="font-size:14px;font-family:var(--B);color:var(--mute)"> / ${D.event.rivals.length}쌍</span></div><div class="ev-hs">평균 대결 ${c.rm.aDone}쌍 판정 · 5쌍 중</div></div>`;
+  }
+  const pz=document.getElementById('ev-pizza');
+  if(pz){
+    const ok=c.korAvg!==null&&c.korAvg>=70;
+    let cls='ev-pizza', ico='🍕', ttl='', sub='';
+    if(!D.students.length){
+      ttl='학생 명단을 먼저 등록해 주세요';
+      sub='👥 학생 탭에서 명단을 등록하면 점수를 입력할 수 있어요.';
+    } else if(c.korAvg===null){
+      cls+=' warn';
+      ttl='국어 2차 점수를 입력하면 반 평균이 나옵니다';
+      sub='반 평균 70점 이상이면 학급 전체 피자 파티!';
+    } else if(ok){
+      cls+=' ok';ico='🎉';
+      ttl='피자 파티 달성!';
+      sub=`반 평균 ${c.korAvg.toFixed(1)}점 — 기준 70점을 ${(c.korAvg-70).toFixed(1)}점 넘었습니다 · ${c.korCnt}명 입력`;
+    } else {
+      cls+=' warn';
+      ttl=`피자 파티까지 ${(70-c.korAvg).toFixed(1)}점`;
+      sub=`현재 반 평균 ${c.korAvg.toFixed(1)}점 · ${c.korCnt}명 입력 · 기준 70점`;
+    }
+    pz.className=cls;
+    pz.innerHTML=`<div class="ev-pz-ico">${ico}</div><div style="flex:1;min-width:0"><div class="ev-pz-ttl">${ttl}</div><div class="ev-pz-sub">${sub}</div></div>`;
+  }
+}
+
+function evRenderRivals(){
+  evEnsure();
+  const wrap=document.getElementById('ev-rv-wrap');if(!wrap)return;
+  const byName={};
+  D.students.forEach(s=>{const n=(s.name||'').trim();if(n&&byName[n]===undefined)byName[n]=s;});
+  wrap.innerHTML=D.event.rivals.length?D.event.rivals.map((pr,i)=>{
+    const a=String((pr&&pr[0])||''), b=String((pr&&pr[1])||'');
+    const okA=!!byName[a.trim()], okB=!!byName[b.trim()];
+    const mark=(okA&&okB)?'✓':((a.trim()||b.trim())?'?':'');
+    return `<div class="ev-rv-row">
+      <div class="ev-rv-n">${i+1}</div>
+      <input class="ev-rv-inp${a.trim()&&!okA?' bad':''}" type="text" list="ev-stu-list" data-key="r-${i}-0" value="${crEsc(a)}" placeholder="학생 이름" autocomplete="off" oninput="evRivalInput(this)">
+      <span class="ev-rv-vs">VS</span>
+      <input class="ev-rv-inp${b.trim()&&!okB?' bad':''}" type="text" list="ev-stu-list" data-key="r-${i}-1" value="${crEsc(b)}" placeholder="학생 이름" autocomplete="off" oninput="evRivalInput(this)">
+      <span class="ev-rv-ok${mark==='✓'?'':' q'}" id="ev-rv-ok-${i}">${mark}</span>
+      <button class="ev-rv-del" onclick="evDelRival(${i})" title="이 맞수 삭제">✕</button>
+    </div>`;
+  }).join(''):'<div style="font-size:12px;color:var(--faint);padding:6px 0">맞수 대진이 없습니다. [＋ 쌍 추가]로 만들어 보세요.</div>';
+  const cnt=document.getElementById('ev-rv-count');
+  if(cnt)cnt.textContent=`(${D.event.rivals.length}쌍)`;
+  wrap.style.display=evRivalsOpen?'':'none';
+  const btn=document.getElementById('ev-rv-toggle');
+  if(btn)btn.textContent=evRivalsOpen?'접기':'펼치기';
+}
+
+function evFocusInfo(){
+  const a=document.activeElement;
+  if(!a||!a.getAttribute||!a.closest||!a.closest('#pg-event'))return null;
+  const k=a.getAttribute('data-key');
+  if(!k)return null;
+  let pos=null;
+  try{pos=a.selectionStart;}catch{}
+  return {k,pos};
+}
+function evRestoreFocus(f){
+  if(!f)return;
+  const el=document.querySelector('#pg-event [data-key="'+f.k+'"]');
+  if(!el)return;
+  try{
+    el.focus();
+    if(f.pos!==null&&f.pos!==undefined&&el.setSelectionRange)el.setSelectionRange(f.pos,f.pos);
+  }catch{}
+}
+
+function renderEvent(){
+  evEnsure();
+  const fi=evFocusInfo();
+  const c=evCompute();
+  const dl=document.getElementById('ev-stu-list');
+  if(dl)dl.innerHTML=D.students.map(s=>`<option value="${crEsc(s.name)}"></option>`).join('');
+  evSummary(c);
+  evRenderRivals();
+  const tb=document.getElementById('ev-tbody');
+  if(tb){
+    tb.innerHTML=c.rows.length?c.rows.map(evRowHtml).join(''):`<tr><td colspan="8" style="padding:30px 10px;color:var(--faint)">👥 학생 탭에서 명단을 등록하면 여기에 나옵니다.</td></tr>`;
+  }
+  const st=document.getElementById('ev-settled');
+  if(st)st.textContent=D.event.settledAt?`마지막 정산: ${D.event.settledAt}`:'';
+  evRecalc();
+  evRestoreFocus(fi);
+}
+
+function evRecalc(){
+  const c=evCompute();
+  c.rows.forEach(r=>{
+    const id=r.s.id;
+    const sum=document.getElementById('ev-sum-'+id);
+    if(sum){
+      sum.textContent=evSigned(r.sumDiff)+'%';
+      sum.className='ev-sum'+(r.sumDiff>0?' up':(r.sumDiff<0?' dn':''));
+    }
+    const det=document.getElementById('ev-det-'+id);
+    if(det)det.innerHTML=evDetHtml(r);
+    const fin=document.getElementById('ev-fin-'+id);
+    if(fin)fin.textContent=r.final.toLocaleString();
+    const dlt=document.getElementById('ev-dlt-'+id);
+    if(dlt){
+      dlt.className='ev-dlt '+(r.delta>0?'up':(r.delta<0?'dn':'zero'));
+      dlt.textContent=r.delta===0?'변동 없음':evSigned(r.delta)+' BP';
+    }
+  });
+  evSummary(c);
+}
+
+/* 점수 입력 */
+function evInput(el){
+  const k=(el.getAttribute('data-key')||'').split('-');
+  if(k[0]!=='s')return;
+  const sid=parseInt(k[1],10), field=k[2];
+  if(!Number.isFinite(sid)||!field)return;
+  evEnsure();
+  let rec=D.event.scores[String(sid)];
+  if(!rec)rec=D.event.scores[String(sid)]={};
+  const v=(el.value||'').trim();
+  if(v==='')delete rec[field];
+  else{
+    const n=parseFloat(v);
+    if(Number.isFinite(n))rec[field]=n; else delete rec[field];
+  }
+  if(!Object.keys(rec).length)delete D.event.scores[String(sid)];
+  evRecalc();
+  evSaveSoon();
+}
+
+/* 맞수 이름 입력 */
+function evRivalInput(el){
+  const k=(el.getAttribute('data-key')||'').split('-');
+  if(k[0]!=='r')return;
+  const i=parseInt(k[1],10), idx=parseInt(k[2],10);
+  evEnsure();
+  const pr=D.event.rivals[i];
+  if(!pr)return;
+  pr[idx]=el.value;
+  const byName={};
+  D.students.forEach(s=>{const n=(s.name||'').trim();if(n&&byName[n]===undefined)byName[n]=s;});
+  const okA=!!byName[String(pr[0]||'').trim()], okB=!!byName[String(pr[1]||'').trim()];
+  el.classList.toggle('bad',!!el.value.trim()&&!(idx?okB:okA));
+  const ok=document.getElementById('ev-rv-ok-'+i);
+  if(ok){
+    const mark=(okA&&okB)?'✓':((String(pr[0]||'').trim()||String(pr[1]||'').trim())?'?':'');
+    ok.textContent=mark;
+    ok.className='ev-rv-ok'+(mark==='✓'?'':' q');
+  }
+  evRecalc();
+  evSaveSoon();
+}
+
+function evToggleRivals(){
+  evRivalsOpen=!evRivalsOpen;
+  const w=document.getElementById('ev-rv-wrap');
+  if(w)w.style.display=evRivalsOpen?'':'none';
+  const b=document.getElementById('ev-rv-toggle');
+  if(b)b.textContent=evRivalsOpen?'접기':'펼치기';
+}
+function evAddRival(){
+  evEnsure();
+  D.event.rivals.push(['','']);
+  evRivalsOpen=true;
+  renderEvent();
+  const i=D.event.rivals.length-1;
+  const el=document.querySelector('#pg-event [data-key="r-'+i+'-0"]');
+  if(el)el.focus();
+  evSaveSoon();
+  toast('맞수 쌍을 추가했어요. 이름을 입력해 주세요.');
+}
+function evDelRival(i){
+  evEnsure();
+  const pr=D.event.rivals[i];
+  if(!pr)return;
+  const label=((pr[0]||'?')+' vs '+(pr[1]||'?'));
+  if(!confirm(label+' 맞수를 삭제할까요?'))return;
+  D.event.rivals.splice(i,1);
+  save();renderEvent();toast('삭제됐습니다.');
+}
+function evResetRivals(){
+  evEnsure();
+  if(!confirm('맞수 대진을 기본 5쌍으로 되돌릴까요?'))return;
+  D.event.rivals=JSON.parse(JSON.stringify(DEF.event.rivals));
+  evRivalsOpen=true;
+  save();renderEvent();toast('맞수 대진 초기화 ✓');
+}
+function evResetScores(){
+  evEnsure();
+  const n=Object.keys(D.event.scores).length;
+  if(!n){toast('초기화할 입력값이 없습니다.');return;}
+  if(!confirm('입력한 점수를 모두 지울까요?\n(맞수 대진과 이미 지급된 BP는 그대로 남습니다.)'))return;
+  D.event.scores={};
+  D.event.applied={};
+  save();renderEvent();toast('입력값 초기화 ✓');
+}
+
+function evDesc(r){
+  const p=[];
+  if(r.kor2===100)p.push('국어100점 +20,000');
+  if(r.avgUp)p.push('평균상승 +5,000');
+  if(r.rk==='win')p.push('국어맞수 +8,000');
+  if(r.ra==='win')p.push('평균맞수 +5,000');
+  if(r.sumDiff!==0)p.push(`4과목 ${evSigned(r.sumDiff)}% ${evSigned(r.pct)}`);
+  return '🎯 2차 시험 이벤트 — '+(p.length?p.join(' · '):'변동 없음');
+}
+
+function evSettleAll(){
+  evEnsure();
+  if(!D.students.length){toast('먼저 👥 학생 탭에서 명단을 등록해 주세요.');return;}
+  const c=evCompute();
+  const list=c.targets.filter(r=>r.delta!==0);
+  if(!c.targets.length){toast('점수를 먼저 입력해 주세요.');return;}
+  if(!list.length){toast('지급할 변동이 없습니다. (모든 학생 변동 0 BP)');return;}
+  let msg='대상 '+list.length+'명의 봉두페이를 정산합니다.\n\n';
+  msg+='총 변동 '+evSigned(c.total)+' BP  (지급 +'+c.earn.toLocaleString()+' · 차감 '+c.cut.toLocaleString()+')\n\n';
+  if(D.event.settledAt)msg+='⚠️ '+D.event.settledAt+'에 이미 정산한 이력이 있습니다.\n다시 정산하면 보너스가 중복 지급되고, 4과목 %도 이미 바뀐 잔액에 다시 적용됩니다.\n(표에 ✅ 정산 표시된 학생이 포함돼 있습니다)\n\n';
+  msg+='정산 후에는 입력값을 고쳐도 이미 지급된 BP가 자동으로 돌아가지 않습니다.\n\n계속할까요?';
+  if(!confirm(msg))return;
+  let n=0,sum=0;
+  list.forEach(r=>{
+    const before=r.s.balance;
+    const after=Math.max(0,before+r.pct+r.bonus);
+    const d=after-before;
+    if(d===0)return;
+    r.s.balance=after;
+    addTx(r.s.id,d>0?'earn':'spend',Math.abs(d),evDesc(r));
+    n++;sum+=d;
+  });
+  D.event.settledAt=nowStr();
+  D.event.applied={};
+  list.forEach(r=>{D.event.applied[String(r.s.id)]={sig:evSig(r.sc),delta:r.delta,at:D.event.settledAt};});
+  save();
+  renderAll();
+  toast(n+'명 정산 완료 · '+evSigned(sum)+' BP ✓');
+}
 
 /* ════════════════════════════════════
    INIT
