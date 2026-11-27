@@ -410,33 +410,57 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
 .ev-rv-del:hover{color:var(--red);}
 .ev-note{font-size:10.5px;color:var(--mute);line-height:1.7;background:var(--canvas);border:1px dashed var(--hair);border-radius:var(--rmd);padding:9px 12px;margin-bottom:12px;}
 .ev-note b{color:var(--ink);}
-.ev-tw{overflow-x:auto;background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);}
-.ev-tbl{border-collapse:collapse;width:100%;min-width:1040px;font-size:12px;}
-.ev-tbl th{background:var(--cloud);color:var(--mute);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:8px 6px;border-bottom:1px solid var(--hair);white-space:nowrap;text-align:center;}
-.ev-tbl td{padding:4px 6px;border-bottom:.5px solid var(--hair);text-align:center;vertical-align:middle;}
-.ev-tbl tr:last-child td{border-bottom:none;}
-.ev-tbl td.l{text-align:left;}
-.ev-nm{font-weight:700;font-size:12.5px;white-space:nowrap;}
-.ev-chip{display:inline-block;margin-left:4px;font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:9999px;background:#e8f5ef;color:var(--green);vertical-align:middle;}
-.ev-bp{font-size:10px;color:var(--mute);margin-top:1px;white-space:nowrap;}
-.ev-inp{width:52px;height:30px;border:1.5px solid var(--hair);border-radius:8px;padding:0 3px;font-size:12px;font-family:var(--B);text-align:center;background:var(--cloud);color:var(--ink);outline:none;}
-.ev-inp:focus{border-color:var(--gold);background:var(--canvas);}
-.ev-inp::-webkit-inner-spin-button,.ev-inp::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
-.ev-inp{-moz-appearance:textfield;appearance:textfield;}
-.ev-inp.k4{width:41px;font-size:11px;}
-.ev-q4w{display:flex;align-items:center;justify-content:center;gap:7px;}
-.ev-q4{display:flex;gap:3px;justify-content:center;}
-.ev-fl{display:flex;flex-direction:column;align-items:center;gap:1px;}
-.ev-fl i{font-style:normal;font-size:8px;color:var(--faint);line-height:1;}
-.ev-sum{display:inline-block;margin-top:0;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:9999px;background:var(--cloud2);color:var(--mute);white-space:nowrap;min-width:34px;text-align:center;}
-.ev-sum.up{background:#e8f5ef;color:var(--green);}
-.ev-sum.dn{background:#fdeaea;color:var(--red);}
-.ev-det{font-size:9.5px;color:var(--mute);line-height:1.55;text-align:left;min-width:150px;}
-.ev-fin{font-weight:700;font-size:12.5px;white-space:nowrap;}
-.ev-dlt{display:block;font-size:9.5px;font-weight:700;margin-top:1px;white-space:nowrap;}
+/* ── 이벤트: 학생별 입력 카드 (1차 4과목 · 2차 6과목) ── */
+.ev-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:10.5px;color:var(--mute);margin:0 0 8px 2px;}
+.ev-tools b{color:var(--ink);font-weight:700;}
+.ev-list{display:flex;flex-direction:column;gap:7px;}
+.ev-card{background:var(--canvas);border:1px solid var(--hair);border-radius:var(--rmd);padding:9px 13px 10px;}
+.ev-card.done{border-color:#cfe8dc;background:#fcfefd;}
+.ev-empty{background:var(--canvas);border:1px dashed var(--hair);border-radius:var(--rmd);padding:28px 10px;text-align:center;color:var(--faint);font-size:12px;}
+.ev-chead{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:.5px solid var(--hair);padding-bottom:6px;margin-bottom:7px;}
+.ev-cwho{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;}
+.ev-nm{font-weight:700;font-size:13.5px;white-space:nowrap;}
+.ev-chip{display:inline-block;font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:9999px;background:#e8f5ef;color:var(--green);}
+.ev-bp{font-size:10px;color:var(--mute);white-space:nowrap;}
+.ev-cres{display:flex;align-items:baseline;gap:7px;}
+.ev-fin-l{font-size:9px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;}
+.ev-fin{font-family:var(--D);font-size:18px;font-weight:400;letter-spacing:.5px;white-space:nowrap;line-height:1;}
+.ev-dlt{font-size:10px;font-weight:700;white-space:nowrap;}
 .ev-dlt.up{color:var(--green);}
 .ev-dlt.dn{color:var(--red);}
 .ev-dlt.zero{color:var(--faint);font-weight:500;}
+.ev-cbody{display:flex;align-items:flex-end;gap:6px 18px;flex-wrap:wrap;}
+.ev-grp{display:flex;align-items:flex-end;gap:5px;}
+.ev-grp-h{font-size:9px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;padding-bottom:8px;}
+.ev-grp-h em{font-style:normal;font-weight:500;font-size:9px;color:var(--faint);letter-spacing:0;margin-left:3px;text-transform:none;}
+.ev-cells{display:flex;gap:3px;}
+.ev-cell{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.ev-cell i{font-style:normal;font-size:8.5px;color:var(--faint);line-height:1;}
+.ev-avg{display:flex;flex-direction:column;align-items:center;gap:2px;padding-left:3px;}
+.ev-avg i{font-style:normal;font-size:8.5px;color:var(--faint);line-height:1;}
+.ev-avg b{font-family:var(--D);font-size:15px;font-weight:400;letter-spacing:.3px;min-width:42px;text-align:center;line-height:1.1;}
+.ev-inp{width:45px;height:30px;border:1.5px solid var(--hair);border-radius:8px;padding:0 3px;font-size:12px;font-family:var(--B);text-align:center;background:var(--cloud);color:var(--ink);outline:none;}
+.ev-inp:focus{border-color:var(--gold);background:var(--canvas);box-shadow:0 0 0 2px rgba(232,160,32,.14);}
+.ev-inp::-webkit-inner-spin-button,.ev-inp::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+.ev-inp{-moz-appearance:textfield;appearance:textfield;}
+.ev-inp.w6{width:40px;}
+.ev-dgrp{flex:1 1 240px;min-width:220px;flex-wrap:wrap;}
+.ev-dgrp .ev-sum{margin-left:2px;}
+.ev-cfoot{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:7px;padding-top:6px;border-top:.5px dashed var(--hair);font-size:9.5px;color:var(--mute);}
+.ev-diff-t{font-size:9px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.4px;}
+.ev-diff{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.ev-dch{font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;background:var(--cloud);color:var(--mute);white-space:nowrap;}
+.ev-dch.up{background:#e8f5ef;color:var(--green);}
+.ev-dch.dn{background:#fdeaea;color:var(--red);}
+.ev-sum{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:9999px;background:var(--cloud2);color:var(--mute);white-space:nowrap;}
+.ev-sum.up{background:#e8f5ef;color:var(--green);}
+.ev-sum.dn{background:#fdeaea;color:var(--red);}
+.ev-det{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.ev-bch{font-size:9px;padding:2px 6px;border-radius:6px;background:var(--cloud);color:var(--mute);white-space:nowrap;}
+.ev-bch b{color:var(--ink);font-weight:700;}
+.ev-bch.done{background:#e8f5ef;color:var(--green);}
+.ev-bch.done b{color:var(--green);}
+.ev-bch.none{color:var(--faint);}
 .ev-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px;}
 .ev-settled{font-size:11px;color:var(--green);font-weight:700;margin-left:auto;}
 @media(max-width:1080px){.cr-layout{grid-template-columns:1fr;}}
@@ -842,26 +866,26 @@ nav{background:var(--canvas);height:56px;display:flex;align-items:center;justify
     </div>
 
     <div class="ev-note">
-      <b>정산 규칙</b> · 국어 2차 <b>100점 +20,000</b> · 국어 반 평균 <b>70점↑ 🍕 피자 파티</b> · 국어 맞수 승 <b>+8,000</b> · 1차 대비 전체 평균 상승 <b>+5,000</b> · 평균 맞수 승 <b>+5,000</b> · 4과목(수·과·영·역) 등락 합계 <b>%만큼 보너스 지급 전 잔액</b>에 적용 · 동점은 무승부(미지급) · 최종 잔액은 0 BP 아래로 내려가지 않습니다.
+      <b>입력 방법</b> · 각 학생의 <b>1차(영·수·과·역)</b>와 <b>2차(국·영·수·과·역·기)</b> 점수만 넣으면 <b>1차·2차 평균</b>과 <b>4과목(영·수·과·역) 등락</b>이 자동으로 계산됩니다. 평균은 입력한 과목만으로 내고 소수 첫째 자리에서 반올림합니다.<br>
+      <b>키보드</b> · <b>Enter·↓·↑</b> = 같은 과목의 다음·이전 학생, <b>Tab</b> = 다음 칸, <b>←·→</b> = 옆 칸(커서가 끝에 있을 때).<br>
+      <b>복붙</b> · 엑셀·구글시트에서 복사한 표(탭·줄바꿈)를 점수 칸 아무 곳에나 붙여넣으면 가로(과목)·세로(학생) 순서로 채워지고 바로 저장됩니다.
     </div>
 
-    <div class="ev-tw">
-      <table class="ev-tbl">
-        <thead>
-          <tr>
-            <th style="text-align:left">학생</th>
-            <th>국어 1차</th>
-            <th>국어 2차</th>
-            <th>평균 1차</th>
-            <th>평균 2차</th>
-            <th>4과목 등락 (수·과·영·역)</th>
-            <th style="text-align:left">보너스 상세</th>
-            <th>예상 최종 BP</th>
-          </tr>
-        </thead>
-        <tbody id="ev-tbody"></tbody>
-      </table>
+    <div class="ev-note">
+      <b>정산 규칙</b> · 국어 2차 <b>100점 +20,000</b> · 국어 반 평균 <b>70점↑ 🍕 피자 파티</b> · 국어 맞수 승 <b>+8,000</b> · 2차 평균 &gt; 1차 평균 <b>+5,000</b> · 평균 맞수 승 <b>+5,000</b> · 영·수·과·역 등락 합계 <b>%만큼 보너스 지급 전 잔액</b>에 적용 · 동점은 무승부(미지급) · 최종 잔액은 0 BP 아래로 내려가지 않습니다.
     </div>
+
+    <div class="ev-tools">
+      <span><b>학생</b> <span id="ev-cnt">0</span>명</span>
+      <span style="color:var(--hair)">|</span>
+      <span>이름 <b>가나다순</b></span>
+      <span style="color:var(--hair)">|</span>
+      <span>평균은 <b>입력한 과목만</b> 반영</span>
+      <span style="flex:1"></span>
+      <span style="color:var(--faint)">엑셀 복사 → 점수 칸에 붙여넣기</span>
+    </div>
+
+    <div class="ev-list" id="ev-list"></div>
 
     <div class="ev-acts">
       <button class="btn cld sm" onclick="evResetScores()">입력값 초기화</button>
@@ -2698,10 +2722,21 @@ if(g)g.addEventListener('keydown',e=>{if(e.key==='Enter')crDrawGuest();});})();
 
 /* ════════════════════════════════════
    EVENT — 2026 2학기 2차 시험 기념 대박 이벤트
+   1차 4과목(영·수·과·역) · 2차 6과목(국·영·수·과·역·기)
+   원점수만 입력하면 평균 · 4과목 등락 · 보너스를 자동 계산
 ════════════════════════════════════ */
 let evRivalsOpen=true, evSaveTimer=null;
-const EV_DIFFS=['mathDiff','sciDiff','engDiff','histDiff'];
-const EV_DLABEL={mathDiff:'수',sciDiff:'과',engDiff:'영',histDiff:'역'};
+
+/* 과목 정의: [키, 한 글자, 이름] */
+const EV_S1=[['eng','영','영어'],['math','수','수학'],['sci','과','과학'],['hist','역','역사']];
+const EV_S2=[['kor','국','국어'],['eng','영','영어'],['math','수','수학'],['sci','과','과학'],['hist','역','역사'],['tech','기','기술·가정']];
+const EV_S1F=EV_S1.map(x=>'s1_'+x[0]);        // 1차 필드 키
+const EV_S2F=EV_S2.map(x=>'s2_'+x[0]);        // 2차 필드 키
+const EV_FIELDS=EV_S1F.concat(EV_S2F);        // 한 학생 안 입력 순서 = Tab 순서
+const EV_COMMON=['eng','math','sci','hist'];  // 1·2차 공통 → 4과목 등락 대상
+const EV_LABEL={}, EV_NAME={}, EV_GROUP={};
+EV_S1.forEach(x=>{EV_LABEL['s1_'+x[0]]=x[1];EV_NAME['s1_'+x[0]]=x[2];EV_GROUP['s1_'+x[0]]='s1';});
+EV_S2.forEach(x=>{EV_LABEL['s2_'+x[0]]=x[1];EV_NAME['s2_'+x[0]]=x[2];EV_GROUP['s2_'+x[0]]='s2';});
 
 function evEnsure(){
   if(D.event===DEF.event)D.event=JSON.parse(JSON.stringify(DEF.event));
@@ -2710,13 +2745,42 @@ function evEnsure(){
   if(!Array.isArray(D.event.rivals))D.event.rivals=JSON.parse(JSON.stringify(DEF.event.rivals));
   if(typeof D.event.settledAt!=='string')D.event.settledAt='';
   if(!D.event.applied||typeof D.event.applied!=='object'||Array.isArray(D.event.applied))D.event.applied={};
+  /* 예전 구조(국어 1·2차 + 수동 평균 + 등락 직접 입력)는 새 구조로 정리.
+     국어 2차(kor2)만 새 2차 국어 칸으로 이어받고, 손으로 넣던 평균·등락 값은 쓰지 않습니다. */
+  Object.keys(D.event.scores).forEach(k=>{
+    const rec=D.event.scores[k];
+    if(!rec||typeof rec!=='object'||Array.isArray(rec)){delete D.event.scores[k];return;}
+    let legacy=false;
+    for(const f in rec){if(EV_FIELDS.indexOf(f)<0){legacy=true;break;}}
+    if(!legacy)return;
+    const out={};
+    EV_FIELDS.forEach(f=>{const n=evNum(rec[f]);if(n!==null)out[f]=n;});
+    if(out.s2_kor===undefined){const n=evNum(rec.kor2);if(n!==null)out.s2_kor=n;}
+    if(Object.keys(out).length)D.event.scores[k]=out; else delete D.event.scores[k];
+  });
 }
 function evNum(v){
   if(v===null||v===undefined||v==='')return null;
   const n=parseFloat(v);return Number.isFinite(n)?n:null;
 }
+function evRound1(v){return v===null?null:Math.round(v*10)/10;}
+/* 평균: 입력된 과목만으로 내고 소수 첫째 자리에서 반올림 (표시·비교 모두 같은 값 사용) */
+function evAvg(rec,fields){
+  const vs=fields.map(f=>evNum(rec[f])).filter(v=>v!==null);
+  if(!vs.length)return null;
+  return evRound1(vs.reduce((a,b)=>a+b,0)/vs.length);
+}
+/* 4과목(영·수·과·역) 등락: 두 시험 모두 입력된 과목만 (2차 − 1차) */
+function evDiffs(rec){
+  const map={},order=[];
+  EV_COMMON.forEach(k=>{
+    const a=evNum(rec['s1_'+k]),b=evNum(rec['s2_'+k]);
+    if(a===null||b===null)return;
+    map[k]=evRound1(b-a);order.push(k);
+  });
+  return {map,order,sum:evRound1(order.reduce((a,k)=>a+map[k],0))};
+}
 function evScore(id){evEnsure();return D.event.scores[String(id)]||{};}
-const EV_FIELDS=['kor1','kor2','avg1','avg2','mathDiff','sciDiff','engDiff','histDiff'];
 function evSig(sc){return EV_FIELDS.map(f=>{const n=evNum(sc[f]);return n===null?'':n;}).join('|');}
 function evSigned(n){return (n>0?'+':'')+n.toLocaleString();}
 /* 입력이 멈춘 뒤 한 번만 저장 (Firebase 전체 PUT 부담 줄이기) */
@@ -2726,8 +2790,17 @@ function evSaveSoon(){
   if(!USE_FB)return;
   evSaveTimer=setTimeout(()=>{evSaveTimer=null;save();},800);
 }
+/* 이벤트 탭은 이름 가나다순 (다른 탭 정렬은 그대로) */
+function evSortedStudents(){
+  const arr=(D.students||[]).slice();
+  arr.sort((a,b)=>{
+    const c=String(a.name||'').localeCompare(String(b.name||''),'ko-KR');
+    return c!==0?c:((a.id||0)-(b.id||0));
+  });
+  return arr;
+}
 
-/* 맞수 대진 → 학생별 승/패/무 판정 */
+/* 맞수 대진 → 학생별 승/패/무 판정 (국어 2차 점수 · 2차 평균) */
 function evRivalMaps(){
   evEnsure();
   const byName={};
@@ -2742,12 +2815,12 @@ function evRivalMaps(){
     const a=byName[String(pr[0]||'').trim()], b=byName[String(pr[1]||'').trim()];
     if(!a||!b||a.id===b.id)return;
     const sa=evScore(a.id), sb=evScore(b.id);
-    const ka=evNum(sa.kor2), kb=evNum(sb.kor2);
+    const ka=evNum(sa.s2_kor), kb=evNum(sb.s2_kor);
     if(ka!==null&&kb!==null){
       const r=ka>kb?['win','lose']:(ka<kb?['lose','win']:['tie','tie']);
       kor[a.id]=r[0];kor[b.id]=r[1];kDone++;
     }
-    const ma=evNum(sa.avg2), mb=evNum(sb.avg2);
+    const ma=evAvg(sa,EV_S2F), mb=evAvg(sb,EV_S2F);
     if(ma!==null&&mb!==null){
       const r=ma>mb?['win','lose']:(ma<mb?['lose','win']:['tie','tie']);
       avg[a.id]=r[0];avg[b.id]=r[1];aDone++;
@@ -2760,10 +2833,10 @@ function evRivalMaps(){
 function evCalc(id,rm){
   const s=D.students.find(x=>x.id===id);if(!s)return null;
   const sc=evScore(id);
-  const kor2=evNum(sc.kor2), avg1=evNum(sc.avg1), avg2=evNum(sc.avg2);
-  const dvals=EV_DIFFS.map(f=>evNum(sc[f]));
-  const hasDiff=dvals.some(v=>v!==null);
-  const sumDiff=dvals.reduce((a,v)=>a+(v||0),0);
+  const kor2=evNum(sc.s2_kor);
+  const avg1=evAvg(sc,EV_S1F), avg2=evAvg(sc,EV_S2F);
+  const d=evDiffs(sc);
+  const sumDiff=d.sum;
   const pct=Math.round(s.balance*(sumDiff/100));
   const avgUp=(avg1!==null&&avg2!==null&&avg2>avg1);
   let bonus=0;
@@ -2775,15 +2848,17 @@ function evCalc(id,rm){
   const final=Math.max(0,s.balance+pct+bonus);
   const ap=D.event.applied[String(id)];
   const settled=!!ap&&ap.sig===evSig(sc);
-  return {s,sc,kor2,avg1,avg2,hasDiff,sumDiff,pct,bonus,avgUp,rk,ra,final,delta:final-s.balance,hasInput:Object.keys(sc).length>0,settled,appliedDelta:settled?(parseFloat(ap.delta)||0):0,appliedAt:settled?(ap.at||''):''};
+  return {s,sc,kor2,avg1,avg2,diffs:d,hasDiff:d.order.length>0,sumDiff,pct,bonus,avgUp,rk,ra,final,delta:final-s.balance,
+    hasInput:EV_FIELDS.some(f=>evNum(sc[f])!==null),settled,
+    appliedDelta:settled?(parseFloat(ap.delta)||0):0,appliedAt:settled?(ap.at||''):''};
 }
 
 function evCompute(){
   evEnsure();
   const rm=evRivalMaps();
-  const rows=D.students.map(s=>evCalc(s.id,rm)).filter(Boolean);
+  const rows=evSortedStudents().map(s=>evCalc(s.id,rm)).filter(Boolean);
   const kors=rows.map(r=>r.kor2).filter(v=>v!==null);
-  const korAvg=kors.length?kors.reduce((a,b)=>a+b,0)/kors.length:null;
+  const korAvg=kors.length?evRound1(kors.reduce((a,b)=>a+b,0)/kors.length):null;
   const targets=rows.filter(r=>r.hasInput);
   let total=0,earn=0,cut=0;
   targets.forEach(r=>{
@@ -2793,35 +2868,69 @@ function evCompute(){
   return {rm,rows,targets,korAvg,korCnt:kors.length,total,earn,cut};
 }
 
+function evSumText(r){return r.hasDiff?`${evSigned(r.sumDiff)}% → ${evSigned(r.pct)} BP`:'—';}
+function evDiffChips(r){
+  if(!r.diffs.order.length)return '<span style="color:var(--faint)">1·2차 모두 넣으면 자동 계산</span>';
+  return r.diffs.order.map(k=>{
+    const d=r.diffs.map[k];
+    return `<span class="ev-dch ${d>0?'up':(d<0?'dn':'')}">${EV_LABEL['s1_'+k]} ${evSigned(d)}</span>`;
+  }).join('');
+}
 function evDetHtml(r){
   const p=[];
-  if(r.settled)p.push(`<b style="color:var(--green)">✅ ${r.appliedAt} 정산 반영 ${evSigned(r.appliedDelta)}</b>`);
-  if(r.kor2===100)p.push('<b>국어 100점</b> +20,000');
-  if(r.avgUp)p.push('<b>평균 상승</b> +5,000');
-  if(r.rk==='win')p.push('<b>국어 맞수 승</b> +8,000');
-  if(r.ra==='win')p.push('<b>평균 맞수 승</b> +5,000');
-  if(r.rk==='tie')p.push('국어 맞수 무승부');
-  if(r.rk==='lose')p.push('국어 맞수 패');
-  if(r.ra==='tie')p.push('평균 맞수 무승부');
-  if(r.ra==='lose')p.push('평균 맞수 패');
-  if(r.hasDiff)p.push(`4과목 ${evSigned(r.sumDiff)}% → <b style="color:${r.pct>0?'var(--green)':(r.pct<0?'var(--red)':'var(--mute)')}">${evSigned(r.pct)}</b>`);
-  return p.length?p.join('<br>'):'—';
+  if(r.settled)p.push(`<span class="ev-bch done">✅ ${r.appliedAt} 정산 반영 ${evSigned(r.appliedDelta)}</span>`);
+  if(r.kor2===100)p.push('<span class="ev-bch"><b>국어 100점</b> +20,000</span>');
+  if(r.avgUp)p.push('<span class="ev-bch"><b>평균 상승</b> +5,000</span>');
+  if(r.rk==='win')p.push('<span class="ev-bch"><b>국어 맞수 승</b> +8,000</span>');
+  if(r.ra==='win')p.push('<span class="ev-bch"><b>평균 맞수 승</b> +5,000</span>');
+  if(r.rk==='tie')p.push('<span class="ev-bch none">국어 맞수 무승부</span>');
+  if(r.rk==='lose')p.push('<span class="ev-bch none">국어 맞수 패</span>');
+  if(r.ra==='tie')p.push('<span class="ev-bch none">평균 맞수 무승부</span>');
+  if(r.ra==='lose')p.push('<span class="ev-bch none">평균 맞수 패</span>');
+  if(!p.length)p.push('<span class="ev-bch none">보너스 없음</span>');
+  return p.join('');
+}
+
+/* 과목 입력칸 (학생 한 명분) */
+function evCellsHtml(id,sc,defs,group){
+  const w=group==='s1'?'':' w6';
+  return defs.map(x=>{
+    const f=group+'_'+x[0];
+    const n=evNum(sc[f]);
+    return `<span class="ev-cell"><i>${x[1]}</i><input class="ev-inp${w}" type="number" inputmode="decimal" min="0" max="100" step="0.1" data-key="s-${id}-${f}" value="${n===null?'':n}" oninput="evInput(this)" onkeydown="evKey(event,this)" onpaste="evPaste(event,this)" aria-label="${x[2]} ${group==='s1'?'1차':'2차'} 점수"></span>`;
+  }).join('');
 }
 
 function evRowHtml(r){
   const s=r.s, sc=r.sc, id=s.id;
-  const val=f=>{const n=evNum(sc[f]);return n===null?'':n;};
-  const q=EV_DIFFS.map(f=>`<span class="ev-fl"><i>${EV_DLABEL[f]}</i><input class="ev-inp k4" type="number" step="0.1" data-key="s-${id}-${f}" value="${val(f)}" oninput="evInput(this)" aria-label="${EV_DLABEL[f]} 등락"></span>`).join('');
-  return `<tr>
-    <td class="l"><div class="ev-nm">${crEsc(s.name)}${r.settled?'<span class="ev-chip">✅ 정산</span>':''}</div><div class="ev-bp">현재 ${s.balance.toLocaleString()} BP</div></td>
-    <td><input class="ev-inp" type="number" min="0" max="100" step="1" data-key="s-${id}-kor1" value="${val('kor1')}" oninput="evInput(this)" aria-label="국어 1차"></td>
-    <td><input class="ev-inp" type="number" min="0" max="100" step="1" data-key="s-${id}-kor2" value="${val('kor2')}" oninput="evInput(this)" aria-label="국어 2차"></td>
-    <td><input class="ev-inp" type="number" min="0" max="100" step="0.1" data-key="s-${id}-avg1" value="${val('avg1')}" oninput="evInput(this)" aria-label="1차 평균"></td>
-    <td><input class="ev-inp" type="number" min="0" max="100" step="0.1" data-key="s-${id}-avg2" value="${val('avg2')}" oninput="evInput(this)" aria-label="2차 평균"></td>
-    <td><div class="ev-q4w"><div class="ev-q4">${q}</div><span class="ev-sum" id="ev-sum-${id}">0%</span></div></td>
-    <td class="l ev-det" id="ev-det-${id}">—</td>
-    <td><span class="ev-fin" id="ev-fin-${id}">${s.balance.toLocaleString()}</span><span class="ev-dlt zero" id="ev-dlt-${id}">변동 없음</span></td>
-  </tr>`;
+  const avgTxt=v=>v===null?'—':v.toFixed(1);
+  return `<div class="ev-card${r.settled?' done':''}" data-sid="${id}">
+    <div class="ev-chead">
+      <div class="ev-cwho"><span class="ev-nm">${crEsc(s.name)}</span>${r.settled?'<span class="ev-chip">✅ 정산</span>':''}<span class="ev-bp">현재 ${s.balance.toLocaleString()} BP</span></div>
+      <div class="ev-cres"><span class="ev-fin-l">예상 최종</span><span class="ev-fin" id="ev-fin-${id}">${r.final.toLocaleString()}</span><span class="ev-dlt ${r.delta>0?'up':(r.delta<0?'dn':'zero')}" id="ev-dlt-${id}">${r.delta===0?'변동 없음':evSigned(r.delta)+' BP'}</span></div>
+    </div>
+    <div class="ev-cbody">
+      <div class="ev-grp">
+        <span class="ev-grp-h">1차<em>영·수·과·역</em></span>
+        <div class="ev-cells">${evCellsHtml(id,sc,EV_S1,'s1')}</div>
+        <span class="ev-avg"><i>평균</i><b id="ev-a1-${id}">${avgTxt(r.avg1)}</b></span>
+      </div>
+      <div class="ev-grp">
+        <span class="ev-grp-h">2차<em>국·영·수·과·역·기</em></span>
+        <div class="ev-cells">${evCellsHtml(id,sc,EV_S2,'s2')}</div>
+        <span class="ev-avg"><i>평균</i><b id="ev-a2-${id}">${avgTxt(r.avg2)}</b></span>
+      </div>
+      <div class="ev-grp ev-dgrp">
+        <span class="ev-grp-h">4과목 등락<em>2차−1차</em></span>
+        <span class="ev-diff" id="ev-diff-${id}">${evDiffChips(r)}</span>
+        <span class="ev-sum ${r.sumDiff>0?'up':(r.sumDiff<0?'dn':'')}" id="ev-sum-${id}">${evSumText(r)}</span>
+      </div>
+    </div>
+    <div class="ev-cfoot">
+      <span class="ev-diff-t">보너스</span>
+      <span class="ev-det" id="ev-det-${id}">${evDetHtml(r)}</span>
+    </div>
+  </div>`;
 }
 
 function evSummary(c){
@@ -2833,8 +2942,10 @@ function evSummary(c){
       <div class="ev-hcell"><div class="ev-hl">국어 반 평균 (2차)</div><div class="ev-hv" style="color:${ok?'var(--green)':'var(--ink)'}">${c.korAvg===null?'—':c.korAvg.toFixed(1)+'점'}</div><div class="ev-hs">${c.korCnt}명 입력 · 기준 70점</div></div>
       <div class="ev-hcell"><div class="ev-hl">정산 대상</div><div class="ev-hv">${c.targets.length}<span style="font-size:14px;font-family:var(--B);color:var(--mute)"> / ${D.students.length}명</span></div><div class="ev-hs">${settledN?'정산 완료 '+settledN+'명 · ':''}점수가 입력된 학생</div></div>
       <div class="ev-hcell"><div class="ev-hl">총 변동 예정${settledN?' (재정산 시)':''}</div><div class="ev-hv" style="color:${c.total>0?'var(--green)':(c.total<0?'var(--red)':'var(--ink)')}">${evSigned(c.total)}<span style="font-size:13px;font-family:var(--B);color:var(--mute)"> BP</span></div><div class="ev-hs">지급 +${c.earn.toLocaleString()} · 차감 ${c.cut.toLocaleString()}</div></div>
-      <div class="ev-hcell"><div class="ev-hl">맞수 판정 (국어)</div><div class="ev-hv">${c.rm.kDone}<span style="font-size:14px;font-family:var(--B);color:var(--mute)"> / ${D.event.rivals.length}쌍</span></div><div class="ev-hs">평균 대결 ${c.rm.aDone}쌍 판정 · 5쌍 중</div></div>`;
+      <div class="ev-hcell"><div class="ev-hl">맞수 판정 (국어)</div><div class="ev-hv">${c.rm.kDone}<span style="font-size:14px;font-family:var(--B);color:var(--mute)"> / ${D.event.rivals.length}쌍</span></div><div class="ev-hs">평균 대결 ${c.rm.aDone}쌍 판정</div></div>`;
   }
+  const cnt=document.getElementById('ev-cnt');
+  if(cnt)cnt.textContent=D.students.length;
   const pz=document.getElementById('ev-pizza');
   if(pz){
     const ok=c.korAvg!==null&&c.korAvg>=70;
@@ -2903,6 +3014,12 @@ function evRestoreFocus(f){
     if(f.pos!==null&&f.pos!==undefined&&el.setSelectionRange)el.setSelectionRange(f.pos,f.pos);
   }catch{}
 }
+function evFocusCell(id,field){
+  const el=document.querySelector('#pg-event [data-key="s-'+id+'-'+field+'"]');
+  if(!el)return false;
+  try{el.focus();if(el.select)el.select();}catch{}
+  return true;
+}
 
 function renderEvent(){
   evEnsure();
@@ -2912,13 +3029,12 @@ function renderEvent(){
   if(dl)dl.innerHTML=D.students.map(s=>`<option value="${crEsc(s.name)}"></option>`).join('');
   evSummary(c);
   evRenderRivals();
-  const tb=document.getElementById('ev-tbody');
-  if(tb){
-    tb.innerHTML=c.rows.length?c.rows.map(evRowHtml).join(''):`<tr><td colspan="8" style="padding:30px 10px;color:var(--faint)">👥 학생 탭에서 명단을 등록하면 여기에 나옵니다.</td></tr>`;
+  const list=document.getElementById('ev-list');
+  if(list){
+    list.innerHTML=c.rows.length?c.rows.map(evRowHtml).join(''):'<div class="ev-empty">👥 <b>학생 탭</b>에서 명단을 등록하면 여기에 이름 가나다순으로 나옵니다.</div>';
   }
   const st=document.getElementById('ev-settled');
   if(st)st.textContent=D.event.settledAt?`마지막 정산: ${D.event.settledAt}`:'';
-  evRecalc();
   evRestoreFocus(fi);
 }
 
@@ -2926,9 +3042,15 @@ function evRecalc(){
   const c=evCompute();
   c.rows.forEach(r=>{
     const id=r.s.id;
+    const a1=document.getElementById('ev-a1-'+id);
+    if(a1)a1.textContent=r.avg1===null?'—':r.avg1.toFixed(1);
+    const a2=document.getElementById('ev-a2-'+id);
+    if(a2)a2.textContent=r.avg2===null?'—':r.avg2.toFixed(1);
+    const df=document.getElementById('ev-diff-'+id);
+    if(df)df.innerHTML=evDiffChips(r);
     const sum=document.getElementById('ev-sum-'+id);
     if(sum){
-      sum.textContent=evSigned(r.sumDiff)+'%';
+      sum.textContent=evSumText(r);
       sum.className='ev-sum'+(r.sumDiff>0?' up':(r.sumDiff<0?' dn':''));
     }
     const det=document.getElementById('ev-det-'+id);
@@ -2940,6 +3062,8 @@ function evRecalc(){
       dlt.className='ev-dlt '+(r.delta>0?'up':(r.delta<0?'dn':'zero'));
       dlt.textContent=r.delta===0?'변동 없음':evSigned(r.delta)+' BP';
     }
+    const card=document.querySelector('#pg-event .ev-card[data-sid="'+id+'"]');
+    if(card)card.classList.toggle('done',r.settled);
   });
   evSummary(c);
 }
@@ -2962,6 +3086,103 @@ function evInput(el){
   if(!Object.keys(rec).length)delete D.event.scores[String(sid)];
   evRecalc();
   evSaveSoon();
+}
+
+/* ── 키보드: Enter·↑·↓ = 같은 과목의 다음/이전 학생, ←·→ = 옆 칸, Tab = 다음 칸 ── */
+function evNavTarget(id,field,dr,dc){
+  const rows=evSortedStudents();
+  const r=rows.findIndex(s=>s.id===id);
+  let c=EV_FIELDS.indexOf(field);
+  if(r<0||c<0)return null;
+  if(dc){
+    c+=dc;
+    if(c<0||c>=EV_FIELDS.length)return null;
+  }
+  if(dr){
+    const nr=r+dr;
+    if(nr<0||nr>=rows.length)return null;
+    return {id:rows[nr].id,field:EV_FIELDS[c]};
+  }
+  return {id:rows[r].id,field:EV_FIELDS[c]};
+}
+function evKey(e,el){
+  if(!e||!el)return;
+  const k=(el.getAttribute('data-key')||'').split('-');
+  if(k[0]!=='s')return;
+  const id=parseInt(k[1],10), field=k[2];
+  let dr=0,dc=0;
+  if(e.key==='Enter')dr=e.shiftKey?-1:1;
+  else if(e.key==='ArrowDown')dr=1;
+  else if(e.key==='ArrowUp')dr=-1;
+  else if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+    let pos=null;
+    try{pos=el.selectionStart;}catch(_){pos=null;}
+    if(pos===null)return;                                  // 숫자칸은 커서 위치를 못 읽어 기본 동작에 맡김
+    const len=(el.value||'').length;
+    if(e.key==='ArrowRight'&&pos<len)return;
+    if(e.key==='ArrowLeft'&&pos>0)return;
+    dc=e.key==='ArrowRight'?1:-1;
+  } else return;
+  const t=evNavTarget(id,field,dr,dc);
+  if(!t)return;
+  if(e.preventDefault)e.preventDefault();
+  evFocusCell(t.id,t.field);
+}
+
+/* ── 엑셀·구글시트 복붙: 탭(가로)·줄바꿈(세로) 그대로 채우고 즉시 재계산·저장 ── */
+function evCellValue(raw){
+  const s=String(raw==null?'':raw).replace(/[\s,]/g,'');
+  if(s==='')return {clear:true};
+  const n=parseFloat(s);
+  return Number.isFinite(n)?{n}:{bad:true};
+}
+function evPasteBlock(id,field,text){
+  evEnsure();
+  const rows=evSortedStudents();
+  const r0=rows.findIndex(s=>s.id===id);
+  const c0=EV_FIELDS.indexOf(field);
+  if(r0<0||c0<0)return null;
+  let lines=String(text==null?'':text).replace(/\r\n?/g,'\n').split('\n');
+  while(lines.length>1&&lines[lines.length-1].trim()==='')lines.pop();
+  let filled=0,cleared=0,skipped=0;
+  lines.forEach((line,i)=>{
+    const cells=line.split('\t');
+    const ri=r0+i;
+    if(ri>=rows.length){skipped+=cells.length;return;}
+    const sid=String(rows[ri].id);
+    let rec=D.event.scores[sid];
+    if(!rec)rec=D.event.scores[sid]={};
+    cells.forEach((raw,j)=>{
+      const cj=c0+j;
+      if(cj>=EV_FIELDS.length){skipped++;return;}
+      const f=EV_FIELDS[cj];
+      const v=evCellValue(raw);
+      if(v.clear){
+        if(rec[f]!==undefined){delete rec[f];cleared++;}
+        return;
+      }
+      if(v.bad){skipped++;return;}
+      rec[f]=v.n;filled++;
+    });
+    if(!Object.keys(rec).length)delete D.event.scores[sid];
+  });
+  return {filled,cleared,skipped,rows:rows.length};
+}
+function evPaste(e,el){
+  if(!e||!e.clipboardData||!el)return;
+  let txt='';
+  try{txt=e.clipboardData.getData('text')||'';}catch(_){txt='';}
+  if(!/[\t\r\n]/.test(txt))return;                          // 한 칸짜리는 기본 붙여넣기(oninput)에 맡김
+  if(e.preventDefault)e.preventDefault();
+  const k=(el.getAttribute('data-key')||'').split('-');
+  if(k[0]!=='s')return;
+  const id=parseInt(k[1],10), field=k[2];
+  const res=evPasteBlock(id,field,txt);
+  if(!res)return;
+  renderEvent();
+  evFocusCell(id,field);
+  evSaveSoon();
+  toast('붙여넣기 완료 · '+res.filled+'칸 입력'+(res.cleared?' · '+res.cleared+'칸 비움':'')+(res.skipped?' · '+res.skipped+'칸 무시':''));
 }
 
 /* 맞수 이름 입력 */
@@ -3037,7 +3258,7 @@ function evDesc(r){
   if(r.avgUp)p.push('평균상승 +5,000');
   if(r.rk==='win')p.push('국어맞수 +8,000');
   if(r.ra==='win')p.push('평균맞수 +5,000');
-  if(r.sumDiff!==0)p.push(`4과목 ${evSigned(r.sumDiff)}% ${evSigned(r.pct)}`);
+  if(r.hasDiff&&r.sumDiff!==0)p.push(`4과목 ${evSigned(r.sumDiff)}% ${evSigned(r.pct)}`);
   return '🎯 2차 시험 이벤트 — '+(p.length?p.join(' · '):'변동 없음');
 }
 
